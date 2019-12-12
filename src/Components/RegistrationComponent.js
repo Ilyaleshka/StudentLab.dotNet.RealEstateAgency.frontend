@@ -24,10 +24,6 @@ class RegisterForm extends React.Component {
 //public String Password { get; set; }
   submitHandler(evt) {
     evt.preventDefault();
-    let id =  Math.floor(Math.random() * (1000000 - 1)) + 1;
-    //this.props.handlerFromParent({firstname: this.state.form.fnameInput, lastname: this.state.form.lnameInput, email: this.state.form.emailInput, password: this.state.form.passwordInput});
-    this.props.handlerFromParent(JSON.stringify({UserId: id, Name: this.state.form.fnameInput, LastName: this.state.form.lnameInput, Email: this.state.form.emailInput, Password : this.state.form.passwordInput}));
-    
     this.setState({
       form:{fnameInput: "",lnameInput:"",emailInput: "",passwordInput: ""}
     });

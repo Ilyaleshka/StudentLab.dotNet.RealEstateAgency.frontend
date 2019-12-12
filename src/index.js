@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/components/App'
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import { createStore, compose, combineReducers } from 'redux';
-import rootReducer from './app/reducers';
-import {productsReducer} from './registration/reducers/reducer'
 
-var red = combineReducers(productsReducer,rootReducer);
+import App from './Components/App';
+import { Provider } from 'react-redux';
+import { createStore, compose, combineReducers ,applyMiddleware } from 'redux';
+import {registrationReducer} from './Store/Reducers/registration';
+import {authorizationReducer} from './Store/Reducers/authorization';
+import {advertisementsReducer} from './Store/Reducers/advertisements';
+import thunkMiddleware from 'redux-thunk';
+
+var rootreducer = combineReducers({registrationReducer,advertisementsReducer,authorizationReducer});
 
 const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : f => f,
+  applyMiddleware(thunkMiddleware)
 );
-const store = createStore(red, undefined, enhancers);
+const store = createStore(rootreducer, enhancers);
+
+store.subscribe(() => {
+  console.log("STORE STATE", store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>

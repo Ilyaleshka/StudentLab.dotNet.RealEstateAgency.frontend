@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch,Route} from 'react-router-dom'
 
-import AuthComponent from '../../authorization/components/AuthComponent';
-import RegistrationComponent from '../../registration/components/RegistrationComponent';
+import AuthComponent from './AuthComponent';
+import RegistrationComponent from './RegistrationComponent';
+import RentRequestListContainer from '../Containers/RentRequestListContainer';
  
 class App extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class App extends React.Component {
                 <Route path="/auth" exact component={AuthComponent}/>
                 <Route path="/reg" exact component={RegistrationComponent}/>
 
-                <Route path="/adv" exact component={AuthComponent}/>
+                <Route path="/adv" exact component={RentRequestListContainer}/>
                 <Route path="/" exact component={AuthComponent}/>
 
                 <Route path="/adv/new" exact component={AuthComponent}/>
