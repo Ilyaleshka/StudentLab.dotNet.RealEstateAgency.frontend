@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import Input from "./Common/Input";
+import Button from "./Common/Button";
 
 class AuthForm extends React.Component {
 
@@ -40,20 +42,11 @@ class AuthForm extends React.Component {
 
   render(){
     return ( 
-    <div>
       <form onSubmit={this.submitHandler}>
-        <input  type="text" name="" 
-                placeholder="Email"
-                value={this.state.form.emailInput}
-                onChange={this.handleEmailChange}/><br/>
-        <input  type="password" name="" 
-                placeholder="Password"
-                value={this.state.form.passwordInput}
-                onChange={this.handlePasswordChange}/><br/>
-        <input type="submit"/>
+        <Input type="text" placeholder="Email" value={this.state.form.emailInput} onChange={this.handleEmailChange}/>
+        <Input type="password" placeholder="Password" value={this.state.form.passwordInput} onChange={this.handlePasswordChange}/>
+        <Button value="LogIn"/>
       </form>
-      <Link to="/auth">I already have an account</Link>
-    </div>
     )
   };
 };
@@ -66,3 +59,23 @@ export default AuthForm;
 //public String LastName { get; set; }
 //public String Email { get; set; }
 //public String Password { get; set; }
+
+
+/**
+ *  render(){
+    return ( 
+      <form onSubmit={this.submitHandler}>
+        <input  type="text" name="" 
+                placeholder="Email"
+                value={this.state.form.emailInput}
+                onChange={this.handleEmailChange}/><br/>
+        <input  type="password" name="" 
+                placeholder="Password"
+                value={this.state.form.passwordInput}
+                onChange={this.handlePasswordChange}/><br/>
+        <input type="submit"/>
+        <Link to="/auth">I already have an account</Link>
+      </form>
+    )
+  };
+ */

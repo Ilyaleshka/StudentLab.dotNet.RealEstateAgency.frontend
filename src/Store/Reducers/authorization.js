@@ -2,7 +2,6 @@ import {actionTypes} from '../ActionTypes/authorization';
 
 export const initialState = {
     pending: false,
-    token : null,
     info: {},
     error: null
 }

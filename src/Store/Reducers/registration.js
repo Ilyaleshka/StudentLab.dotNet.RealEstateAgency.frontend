@@ -2,7 +2,6 @@ import {actionTypes} from '../ActionTypes/registration';
 
 export const initialState = {
     pending: false,
-    token : null,
     info: {},
     error: null
 }

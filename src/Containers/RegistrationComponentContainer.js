@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import registerUser from '../Store/AsyncActionCreators/registration';
-import RegistrationContainer from '../Components/RegistrationComponent'
+import RegistrationContainer from '../Components/RegistrationForm'
 
 
 const mapStateToProps = (state) => ({
