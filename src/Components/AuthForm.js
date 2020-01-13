@@ -1,7 +1,8 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import Input from "./Common/Input";
 import Button from "./Common/Button";
+import './Styles/AuthForm.css';
 
 class AuthForm extends React.Component {
 
@@ -14,13 +15,19 @@ class AuthForm extends React.Component {
     this.state = {
       form:{emailInput: "", passwordInput: ""}
     };
+
+    this.RegistrationClick = this.RegistrationClick.bind(this);
   }
 
+  RegistrationClick()
+  {
+    this.props.history.push("/reg");
+  } 
 
   submitHandler(evt) {
     evt.preventDefault();
 
-    this.props.handlerFromParent({email: this.state.form.emailInput, password: this.state.form.passwordInput});
+    this.props.handlerFromParent(this.state.form.emailInput,this.state.form.passwordInput);
     
     this.setState({
       form:{emailInput: "",passwordInput: ""}
@@ -42,16 +49,17 @@ class AuthForm extends React.Component {
 
   render(){
     return ( 
-      <form onSubmit={this.submitHandler}>
+      <form className="AuthForm" onSubmit={this.submitHandler}>
         <Input type="text" placeholder="Email" value={this.state.form.emailInput} onChange={this.handleEmailChange}/>
         <Input type="password" placeholder="Password" value={this.state.form.passwordInput} onChange={this.handlePasswordChange}/>
         <Button value="LogIn"/>
+        <a className="Form_Link" onClick={this.RegistrationClick}>I don't have an account</a>
       </form>
     )
   };
 };
 
-export default AuthForm;
+export default withRouter(AuthForm);
 
 
 //public Int32 UserId { get; set; }

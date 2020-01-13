@@ -1,7 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import Input from "./Common/Input";
+import Button from "./Common/Button";
+import "./Styles/RegForm.css"
 
-class RegisterForm extends React.Component {
+class RegForm extends React.Component {
 
   constructor() {
     super();
@@ -24,6 +27,9 @@ class RegisterForm extends React.Component {
 //public String Password { get; set; }
   submitHandler(evt) {
     evt.preventDefault();
+
+    this.props.handlerFromParent(this.state.form.fnameInput,this.state.form.lnameInput,this.state.form.emailInput,this.state.form.passwordInput);
+
     this.setState({
       form:{fnameInput: "",lnameInput:"",emailInput: "",passwordInput: ""}
     });
@@ -54,8 +60,19 @@ class RegisterForm extends React.Component {
     });
   }
 
-
   render(){
+    return ( 
+      <form className="RegForm" onSubmit={this.submitHandler}>
+        <Input type="text" placeholder="First Name" value={this.state.form.fnameInput} onChange={this.handleFnameChange}/>
+        <Input type="text" placeholder="Last Name" value={this.state.form.lnameInput} onChange={this.handleLnameChange}/>
+        <Input type="text" placeholder="Email" value={this.state.form.emailInput} onChange={this.handleEmailChange}/>
+        <Input type="password" placeholder="Password" value={this.state.form.passwordInput} onChange={this.handlePasswordChange}/>
+        <Button value="Register"/>
+      </form>
+    )
+  };
+
+  /*render(){
     return ( 
     <div>
       <form onSubmit={this.submitHandler}>
@@ -82,10 +99,10 @@ class RegisterForm extends React.Component {
       <Link to="/reg">I dont have an account</Link>
     </div>
     )
-  };
+  };*/
 };
 
-export default RegisterForm;
+export default RegForm;
 
 
 

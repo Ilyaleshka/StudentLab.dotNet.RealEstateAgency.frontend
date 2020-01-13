@@ -11,10 +11,19 @@ import {registrationPending, registrationSuccess, registrationError} from '../Ac
 }
 */
 
-function registerUser(user) {
+function registerUser(firsttName,lastName,email,password) {
+    
+    let registrationInfo = 
+    {
+        FirstName: firsttName,
+        LastName: lastName,
+        Email: email,     
+        Password: password
+    };
+    
     return dispatch => {
         dispatch(registrationPending());
-        fetch('https://localhost:44305/reg',{method:'put', body: user})
+        fetch('https://localhost:44305/api/account/register',{method:'put', body: registrationInfo})
         .then(res => res.json())
         .then(res => {
             if(res.error) {

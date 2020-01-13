@@ -1,0 +1,25 @@
+.RegForm
+{
+    display: block;
+    width: 250px;
+    height: 300px;
+    margin: 250px auto;
+    background-color:rgb(32, 38, 40);
+    border-radius: 5px;
+    padding: 20px 20px;
+}
+
+.RegForm .Input
+{
+    display: block;
+    margin:  25px auto;
+}
+
+.Form_Link
+{
+    width: 135px;
+    color: #FF8C39;
+    display: block;
+    margin: 0 auto ;
+    font-size: 13px;    
+}
