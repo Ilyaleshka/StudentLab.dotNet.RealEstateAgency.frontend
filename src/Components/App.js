@@ -7,6 +7,7 @@ import RentRequestListContainer from '../Containers/RentRequestListContainer';
 import AdvertismentsPage from './Pages/AdvertismentsPage';
 import LoginPage from './Pages/LoginPage';
 import RegistrationPage from './Pages/RegistrationPage';
+import AnnouncementPage from './Pages/AnnouncementPage';
  
 class App extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class App extends React.Component {
                 <Route path="/adv" exact component={RentRequestListContainer}/>
                 <Route path="/" exact component={AdvertismentsPage}/>
 
-                <Route path="/adv/new" exact component={AuthComponent}/>
+                <Route path="/adv/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
 
                 <Route path="/adv/:id" exact component={AuthComponent}/>
 
@@ -31,3 +32,6 @@ class App extends React.Component {
 }
  
 export default App;
+
+
+// <Route path="/adv/new" exact rendrcomponent={AdvertismentsPage}/>

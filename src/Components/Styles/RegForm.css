@@ -2,15 +2,16 @@
 {
     display: block;
     width: 250px;
-    height: 300px;
+    height: 410px;
     margin: 250px auto;
     background-color:rgb(32, 38, 40);
     border-radius: 5px;
     padding: 20px 20px;
 }
 
-.RegForm .Input
+.RegForm .FormInput
 {
+    width: 200px;
     display: block;
     margin:  25px auto;
 }

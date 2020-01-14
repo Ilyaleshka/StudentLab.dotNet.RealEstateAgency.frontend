@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-class RentalAnnouncement extends React.Component {
+class RentalAnnouncementItem
+ extends React.Component {
 
   constructor() {
     super();
@@ -10,26 +11,27 @@ class RentalAnnouncement extends React.Component {
   render(){
     return ( 
     <div>
-        <p>Title: {this.props.title}</p>
-        <br/>
-        <p>Description: {this.props.description}</p>
-        <br/>
-        <p>Area: {this.props.area}</p>
-        <br/>
-        <p>Address: {this.props.address}</p>
-        <br/>
-        <p>Cost: {this.props.cost}</p>
-        <br/>
-        <p>Location: {this.props.location}</p>
-        <br/>
-        <p>User</p>
+      <p>Title: {this.props.title}</p>
+      <br/>
+      <p>Description: {this.props.description}</p>
+      <br/>
+      <p>Area: {this.props.area}</p>
+      <br/>
+      <p>Address: {this.props.address}</p>
+      <br/>
+      <p>Cost: {this.props.cost}</p>
+      <br/>
+      <p>Location: {this.props.location}</p>
+      <br/>
+    <p>User</p> 
     </div>
     )
   };
 }
 
 
-export default  RentalAnnouncement;
+export default  RentalAnnouncementItem
+;
 
 /*
         public String Title { get; set; }

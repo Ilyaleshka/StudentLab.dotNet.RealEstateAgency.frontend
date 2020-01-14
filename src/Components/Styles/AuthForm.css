@@ -2,15 +2,16 @@
 {
     display: block;
     width: 250px;
-    height: 200px;
+    height: 270px;
     margin: 250px auto;
     background-color:rgb(32, 38, 40);
     border-radius: 5px;
     padding: 20px 20px;
 }
 
-.AuthForm .Input
+.AuthForm .FormInput
 {
+    width: 150px;
     display: block;
     margin:  25px auto;
 }

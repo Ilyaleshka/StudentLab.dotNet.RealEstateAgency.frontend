@@ -1,0 +1,31 @@
+.ModelTextArea textarea{
+    resize: none;
+    display: block;
+    border: 1px solid #cccccc; /*цвет рамки*/
+    border-radius: 3px; /*закругление углов (общее)*/
+    background: #ffffff !important; /*желательно прописывать, так как в Chrome при сохранных данных оно может быть желтым*/
+    outline: none;/*удаляет обводку в браузерах хром(желтая) и сафари(синяя)*/
+    height: 100px; /*высота на свое усмотрение*/
+    width: 99%;/* ширина на свое усмотрение*/
+    color: #706f6f; /*цвет шрифта в обычном состоянии*/
+    font-size: 11px; /* Размер шрифта*/
+    font-family: Tahoma;/* Стиль шрифта*/
+    margin: 5px auto ;
+  }
+
+  .ModelTextArea label{
+    display: block;
+    outline: none;/*удаляет обводку в браузерах хром(желтая) и сафари(синяя)*/
+    height: 24px; /*высота на свое усмотрение*/
+    width: 100%;/* ширина на свое усмотрение*/
+    color: rgb(119, 110, 110); /*цвет шрифта в обычном состоянии*/
+    font-size: 13px; /* Размер шрифта*/
+    font-family: Tahoma;/* Стиль шрифта*/
+    margin: 5px 0 ;
+  }
+
+  div.ModelTextArea {
+    display: block;
+    margin: 5px;
+    box-sizing: border-box;
+  }

@@ -1,0 +1,22 @@
+form.RentalAnnouncementModel
+{
+    margin: 250px auto;
+    width: 500px;
+    background-color: rgb(32, 38, 40);
+    border-radius: 10px;
+}
+
+.RentalAnnouncementModel .ModelInput {   
+    padding: 1px;
+    width: 300px;
+    margin: 10px auto;
+    box-sizing: border-box;
+  }
+
+  
+.RentalAnnouncementModel .ModelTextArea{   
+    padding: 1px;
+    width: 300px;
+    margin: 10px auto;
+    box-sizing: border-box;
+  }
