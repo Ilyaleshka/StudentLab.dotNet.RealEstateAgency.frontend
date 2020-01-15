@@ -1,5 +1,5 @@
 import React from "react";
-import RentalRequest from './RentalRequest'
+import RentalRequest from './RentalRequestModel'
 
 class RentalRequestList extends React.Component {
 

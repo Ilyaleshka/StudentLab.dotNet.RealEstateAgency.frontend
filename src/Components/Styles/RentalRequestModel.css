@@ -1,4 +1,4 @@
-form.RentalAnnouncementModel
+form.RentalRequestModel
 {
   align-items: center;
   justify-content: space-around;
@@ -11,14 +11,14 @@ form.RentalAnnouncementModel
     border-radius: 10px;
 }
 
-h1.RentalAnnouncementModel
+h1.RentalRequestModel
 {
     padding: 20px;
-    width: 420px;
+    width: 270px;
     margin: 100px auto 0 auto;
 }
 
-.RentalAnnouncementModel .ModelInput {   
+.RentalRequestModel .ModelInput {   
     padding: 1px;
     width: 300px;
     margin: 10px auto;
@@ -26,20 +26,9 @@ h1.RentalAnnouncementModel
   }
 
   
-.RentalAnnouncementModel .ModelTextArea{   
+.RentalRequestModel .ModelTextArea{   
     padding: 1px;
     width: 680px;
     margin: 10px auto;
     box-sizing: border-box;
-  }
-
-  .RentalAnnouncementModel .LocationPicker{   
-    padding: 1px;
-    width: 320px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .RentalAnnouncementModel .MultipleImageUploadComponent{ 
-    width: 680px;
   }

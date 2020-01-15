@@ -3,7 +3,9 @@ import Input from "./Common/ModelInput";
 import "./Styles/RentalAnnouncementModel.css"
 import ModelTextArea from "./Common/ModelTextArea";
 import CustomMap from "./Common/CustomMap";
-import { GoogleMap } from "./Common/GoogleMap";
+import LocationPicker from "./Common/LocationPicker";
+import MultipleImageUploadComponent from "./Common/ImageLoader";
+import Button from "./Common/Button";
 
 class RentalAnnouncementModel extends React.Component {
 
@@ -20,10 +22,11 @@ class RentalAnnouncementModel extends React.Component {
                 Area: 0,
                 Address: "",
                 Cost: 0,
-                Location: ""
+                Location: []
             };
 
         this.createHandleChangeFunction = this.createHandleChangeFunction.bind(this);
+        this.locationHandleChangeFunction=  this.locationHandleChangeFunction.bind(this);
     };
 
     createHandleChangeFunction(target)
@@ -34,6 +37,13 @@ class RentalAnnouncementModel extends React.Component {
             //console.log( this);
             this.setState({[target]: event.target.value });
         }
+    }
+
+    locationHandleChangeFunction(location)
+    {
+        //console.log(event.target.value);
+        //console.log( this);
+        this.setState({ Location: location });
     }
 
     
@@ -50,25 +60,43 @@ class RentalAnnouncementModel extends React.Component {
         );
     }
 
+    
+    submitHandler(evt) {
+    evt.preventDefault();
+
+    this.props.handlerFromParent(this.state.form.emailInput,this.state.form.passwordInput);
+
+    this.setState({
+        form:{emailInput: "",passwordInput: ""}
+    });
+    }
+
+
     render(){
 
         return ( 
-        <form className="RentalAnnouncementModel">
-            <Input label="Title" type="text" placeholder="Title" value={this.state.Title} onChange={this.createHandleChangeFunction("Title")}/>
-            <Input label="Area" type="number" placeholder="Area" value={this.state.Area} onChange={this.createHandleChangeFunction("Area")}/>
-            <Input label="Address" type="text" placeholder="Address" value={this.state.Address} onChange={this.createHandleChangeFunction("Address")}/>
-            <Input label="Cost" type="number" placeholder="Cost" value={this.state.Cost} onChange={this.createHandleChangeFunction("Cost")}/>
-            <Input label="Location" type="text" placeholder="Location" value={this.state.Location} onChange={this.createHandleChangeFunction("Location")}/>
-            <ModelTextArea label="Description" type="text" placeholder="Description" value={this.state.Description} onChange={this.createHandleChangeFunction("Description")}/>
-            <CustomMap/>
-            
-            <input type="file"></input>
-        </form>
+        <React.Fragment>
+            <h1 className="RentalAnnouncementModel">RENTAL ANNOUNCEMENT</h1>
+            <form className="RentalAnnouncementModel">
+                <div>
+                    <Input label="Title" type="text" placeholder="Title" value={this.state.Title} onChange={this.createHandleChangeFunction("Title")}/>
+                    <Input label="Area" type="number" placeholder="Area" value={this.state.Area} onChange={this.createHandleChangeFunction("Area")}/>
+                    <Input label="Address" type="text" placeholder="Address" value={this.state.Address} onChange={this.createHandleChangeFunction("Address")}/>
+                    <Input label="Cost ($)" type="number" placeholder="Cost" value={this.state.Cost} onChange={this.createHandleChangeFunction("Cost")}/>
+                </div>
+                <div>
+                    <LocationPicker value={this.state.Location} onChange={this.locationHandleChangeFunction}/>
+                </div>
+                <ModelTextArea label="Description" type="text" placeholder="Description" value={this.state.Description} onChange={this.createHandleChangeFunction("Description")}/>
+                <MultipleImageUploadComponent/>
+                <Button value="Create"/>
+            </form>
+        </React.Fragment>
         )
     };
 }
 
-
+           //<CustomMap/>
 export default  RentalAnnouncementModel
 ;
 

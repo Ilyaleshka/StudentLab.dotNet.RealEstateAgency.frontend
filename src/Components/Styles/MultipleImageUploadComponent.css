@@ -1,0 +1,40 @@
+.MultipleImageUploadComponent
+{
+    position: relative;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 0 auto;
+    background-color: rgb(24, 27, 29);
+    border-radius: 20px;
+}
+
+.MultipleImageUploadComponent img
+{
+    max-width: 150px;
+    max-height: 150px;
+    margin: 5px;
+}
+
+.MultipleImageUploadComponent .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .MultipleImageUploadComponent .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color:rgb(24, 27, 29);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .MultipleImageUploadComponent .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
