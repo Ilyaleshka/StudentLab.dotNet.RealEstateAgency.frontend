@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 class RentalAnnouncementItem
  extends React.Component {
 
+  // it does nothing, can be removed
   constructor() {
     super();
     };

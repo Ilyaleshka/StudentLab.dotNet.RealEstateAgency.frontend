@@ -14,6 +14,7 @@ class RegForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
     this.submitHandler = this.submitHandler.bind(this);
+    // No need to have 'form' field, just put input fields directly to state
     this.state = {
       form:{ fnameInput: "", lnameInput: "", emailInput: "", passwordInput: ""}
     };
