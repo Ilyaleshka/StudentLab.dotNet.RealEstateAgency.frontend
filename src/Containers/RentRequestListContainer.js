@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import requestAdvertisements from '../Store/AsyncActionCreators/advertisements';
+import {requestAdvertisements} from '../Store/AsyncActionCreators/advertisements';
 import RentRequestList from '../Components/RentRequestList'
 
 const mapStateToProps = (state) => ({

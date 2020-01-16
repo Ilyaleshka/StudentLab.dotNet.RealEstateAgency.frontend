@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header";
 import RentalAnnouncementModel from "../RentalAnnouncementModel";
-import RentalRequestModel from "../RentalRequestModel";
+import RentalRequestItem from "../RentalRequestModel";
 
 class RequestPage extends React.Component {
 
@@ -27,7 +27,7 @@ class RequestPage extends React.Component {
     return(
         <React.Fragment>
             <Header isLoggedIn="false" />
-            <RentalRequestModel create={this.props.create} model={userModel}/>
+            <RentalRequestItem create={this.props.create} model={userModel}/>
         </React.Fragment>
     );
   }

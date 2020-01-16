@@ -21,5 +21,4 @@ class RentalRequestList extends React.Component {
   }
 }
 
-
 export default  RentalRequestList;

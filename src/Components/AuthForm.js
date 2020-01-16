@@ -6,54 +6,35 @@ import './Styles/AuthForm.css';
 
 class AuthForm extends React.Component {
 
-  constructor() {
-    super();
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  state = {
+    Name: "",
+    Password: ""
+  };
 
-    this.submitHandler = this.submitHandler.bind(this);
-    this.state = {
-      form:{emailInput: "", passwordInput: ""}
-    };
-
-    this.RegistrationClick = this.RegistrationClick.bind(this);
-  }
-
-  RegistrationClick()
-  {
+  registrationClick = () => {
     this.props.history.push("/reg");
   } 
 
-  submitHandler(evt) {
-    evt.preventDefault();
+  submitHandler = (event) => {
+    event.preventDefault();
 
-    this.props.handlerFromParent(this.state.form.emailInput,this.state.form.passwordInput);
-    
-    this.setState({
-      form:{emailInput: "",passwordInput: ""}
-    });
-  }
+    //AUTH HANDLER
+    this.props.handlerFromParent(this.state.Name , this.state.Password);
 
-  handleEmailChange(event) {
-    this.setState({
-      form:{emailInput: event.target.value}
-    });
-  }
+    this.setState({ Name: "", Password: ""});
+  };
 
-  handlePasswordChange(event) {
-    this.setState({
-      form:{passwordInput: event.target.value}
-    });
-  }
+  handleNameChange = (event) => { this.setState({ Name: event.target.value }); };
+  handlePasswordChange = (event) => { this.setState({ Password : event.target.value }); };
 
 
   render(){
     return ( 
       <form className="AuthForm" onSubmit={this.submitHandler}>
-        <Input type="text" placeholder="Email" value={this.state.form.emailInput} onChange={this.handleEmailChange}/>
-        <Input type="password" placeholder="Password" value={this.state.form.passwordInput} onChange={this.handlePasswordChange}/>
+        <Input type="text" placeholder="Name" value={ this.state.Name } onChange={ this.handleNameChange }/>
+        <Input type="password" placeholder="Password" value={ this.state.Password } onChange={ this.handlePasswordChange }/>
         <Button value="LogIn"/>
-        <a className="Form_Link" onClick={this.RegistrationClick}>I don't have an account</a>
+        <a className="Form_Link" onClick={this.registrationClick}>I don't have an account</a>
       </form>
     )
   };

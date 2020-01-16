@@ -7,27 +7,45 @@ import {authorizationPending, authorizationSuccess, authorizationError} from '..
 }
 */
 
-function authorizeUser(email,password) {
+function authorizeUser(name,password) {
     let user = 
     {  
-        Email: email,
+        Name: name,
         Password: password
     };
 
-    return dispatch => {
+    return async dispatch => {
         dispatch(authorizationPending());
-        fetch('https://localhost:44305/api/account/login',{method:'put', body: user})             //TODO
-        .then(res => res.json())
-        .then(res => {
-            if(res.error) {
-                throw(res.error);
+        try{
+            let responce = await fetch('https://localhost:44305/api/account/login',{
+                method:'post',  
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });          //TODO
+
+            console.log(responce);
+            if(!responce.ok)
+            {
+                if(responce.bodyUsed)
+                {
+                    let errorBody = await responce.json();
+                    dispatch(authorizationError(errorBody));
+        
+                }
+                else
+                    dispatch(authorizationError("Error occured"));
+                return;
             }
-            dispatch(authorizationSuccess(res.info));
-            return res.info;
-        })
-        .catch(error => {
-            dispatch(authorizationError(error));
-        })
+            
+            let respBody = await responce.json();
+            dispatch(authorizationSuccess(respBody ));
+        }
+        catch(e){
+            dispatch(authorizationError(e));
+        }
     }
 }
 
@@ -35,13 +53,16 @@ function logoutUser() {
     return dispatch => {
         dispatch(authorizationPending());
         fetch('https://localhost:44305/api/account/logout',{method:'get'})             //TODO
-        .then(res => res.json())
+        .then(res => 
+            {
+                console.log(res);
+                if(!res.ok) {
+                    throw(res.json());
+                }
+                return res.json()
+            })
         .then(res => {
-            if(res.error) {
-                throw(res.error);
-            }
-            dispatch(authorizationSuccess(res.info));
-            return res.info;
+            dispatch(authorizationSuccess(res));
         })
         .catch(error => {
             dispatch(authorizationError(error));

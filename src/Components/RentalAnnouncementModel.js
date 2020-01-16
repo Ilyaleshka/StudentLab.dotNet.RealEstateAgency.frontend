@@ -9,85 +9,66 @@ import Button from "./Common/Button";
 
 class RentalAnnouncementModel extends React.Component {
 
+    state = 
+    {
+        Title: "",
+        Description: "",
+        Area: 0,
+        Address: "",
+        Cost: 0,
+        Location: "[]",
+        Base64Images: []
+    };
+
     constructor(props) {
         super();
 
         if(props.create == false)
             this.state = props.model;
-        else
-            this.state = 
-            {
-                Title: "",
-                Description: "",
-                Area: 0,
-                Address: "",
-                Cost: 0,
-                Location: []
-            };
 
-        this.createHandleChangeFunction = this.createHandleChangeFunction.bind(this);
-        this.locationHandleChangeFunction=  this.locationHandleChangeFunction.bind(this);
     };
 
-    createHandleChangeFunction(target)
-    {
-        return (event) =>
-        {
-            //console.log(event.target.value);
-            //console.log( this);
-            this.setState({[target]: event.target.value });
-        }
+    submitHandler = (evt) => {
+        evt.preventDefault();
+
+        //VALIDATION FUNCTION HERE
+
+        ///CREATE HANDLER FROM PROPS HERE
+        this.props.createHandler(this.state.Title, this.state.Description, this.state.Area, this.state.Address, this.state.Cost, this.state.Location, this.state.Base64Images);
+
+        this.setState({
+            Title: "",
+            Description: "",
+            Area: 0,
+            Address: "",
+            Cost: 0,
+            Location: []
+        });
     }
 
-    locationHandleChangeFunction(location)
-    {
-        //console.log(event.target.value);
-        //console.log( this);
-        this.setState({ Location: location });
-    }
-
-    
-    handleChange(event) {
-        this.setState(
-            {
-                Title: "",
-                Description: "",
-                Area: 0,
-                Address: "",
-                Cost: 0,
-                Location: ""
-            }
-        );
-    }
-
-    
-    submitHandler(evt) {
-    evt.preventDefault();
-
-    this.props.handlerFromParent(this.state.form.emailInput,this.state.form.passwordInput);
-
-    this.setState({
-        form:{emailInput: "",passwordInput: ""}
-    });
-    }
-
+    titleChangeHandler = (event) => { this.setState({Title: event.target.value }); };
+    areaChangeHandler = (event) => { this.setState({Area: event.target.value }); };
+    addressChangeHandler = (event) => { this.setState({Address: event.target.value }); };
+    priceChangeHandler = (event) => { this.setState({Cost: event.target.value }); };
+    descriptionChangeHandler = (event) => { this.setState({Description: event.target.value }); };
+    locationHandleChangeFunction = (location) =>{this.setState({ Location: location });};
 
     render(){
 
         return ( 
         <React.Fragment>
             <h1 className="RentalAnnouncementModel">RENTAL ANNOUNCEMENT</h1>
-            <form className="RentalAnnouncementModel">
+            <form className="RentalAnnouncementModel" onSubmit={this.submitHandler}>
                 <div>
-                    <Input label="Title" type="text" placeholder="Title" value={this.state.Title} onChange={this.createHandleChangeFunction("Title")}/>
-                    <Input label="Area" type="number" placeholder="Area" value={this.state.Area} onChange={this.createHandleChangeFunction("Area")}/>
-                    <Input label="Address" type="text" placeholder="Address" value={this.state.Address} onChange={this.createHandleChangeFunction("Address")}/>
-                    <Input label="Cost ($)" type="number" placeholder="Cost" value={this.state.Cost} onChange={this.createHandleChangeFunction("Cost")}/>
+                    <Input label="Title" type="text" placeholder="Title" value={this.state.Title} onChange={this.titleChangeHandler}/>
+                    <Input label="Area" type="number" placeholder="Area" value={this.state.Area} onChange={this.areaChangeHandler }/>
+                    <Input label="Address" type="text" placeholder="Address" value={this.state.Address} onChange={this.addressChangeHandler}/>
+                    <Input label="Cost ($)" type="number" placeholder="Cost" value={this.state.Cost} onChange={this.priceChangeHandler}/>
                 </div>
                 <div>
                     <LocationPicker value={this.state.Location} onChange={this.locationHandleChangeFunction}/>
                 </div>
-                <ModelTextArea label="Description" type="text" placeholder="Description" value={this.state.Description} onChange={this.createHandleChangeFunction("Description")}/>
+                <ModelTextArea label="Description" type="text" placeholder="Description" value={this.state.Description} onChange={this.descriptionChangeHandler}/>
                 <MultipleImageUploadComponent/>
                 <Button value="Create"/>
             </form>
@@ -96,9 +77,7 @@ class RentalAnnouncementModel extends React.Component {
     };
 }
 
-           //<CustomMap/>
-export default  RentalAnnouncementModel
-;
+export default  RentalAnnouncementModel;
 
 /*
         public String Title { get; set; }
@@ -107,5 +86,4 @@ export default  RentalAnnouncementModel
         public String Address { get; set; }
         public Int32 Cost { get; set; }
         public String Location { get; set; }
-        public Int32 UserId { get; set; }
 */ 

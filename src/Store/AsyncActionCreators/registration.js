@@ -11,30 +11,47 @@ import {registrationPending, registrationSuccess, registrationError} from '../Ac
 }
 */
 
-function registerUser(firsttName,lastName,email,password) {
+function registerUser( firstName, lastName, email, password) {
     
     let registrationInfo = 
     {
-        FirstName: firsttName,
+        Name: firstName,
         LastName: lastName,
         Email: email,     
         Password: password
     };
     
-    return dispatch => {
+    return async dispatch => {
         dispatch(registrationPending());
-        fetch('https://localhost:44305/api/account/register',{method:'put', body: registrationInfo})
-        .then(res => res.json())
-        .then(res => {
-            if(res.error) {
-                throw(res.error);
+        try{
+            let responce = await fetch('https://localhost:44305/api/account/register',{
+                method:'post',  
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(registrationInfo)
+            });          //TODO
+
+            console.log(responce);
+            if(!responce.ok)
+            {
+                if(responce.bodyUsed)
+                {
+                    let errorBody = await responce.json();
+                    dispatch(registrationError(errorBody));
+                }
+                else
+                    dispatch(registrationError("Error occured"));
+
+                return;
             }
-            dispatch(registrationSuccess(res.info));
-            return res.info;
-        })
-        .catch(error => {
-            dispatch(registrationError(error));
-        })
+            
+            let respBody = await responce.json();
+            dispatch(registrationSuccess(respBody ));
+        }
+        catch(e){
+            dispatch(registrationError(e));
+        }
     }
 }
 

@@ -17,6 +17,10 @@ export const actionTypes = {
     RENT_ANNOUNCEMENT_PENDING: "RENT_ANNOUNCEMENT_PENDING",
     RENT_ANNOUNCEMENT_SUCCESS: "RENT_ANNOUNCEMENT_SUCCESS",
     RENT_ANNOUNCEMENT_ERROR: "RENT_ANNOUNCEMENT_ERROR",
+
+        RENT_ANNOUNCEMENT_CREATE_PENDING: "RENT_ANNOUNCEMENT_CREATE_PENDING",
+    RENT_ANNOUNCEMENT_CREATE_SUCCESS: "RENT_ANNOUNCEMENT_CREATE_SUCCESS",
+    RENT_ANNOUNCEMENT_CREATE_ERROR: "RENT_ANNOUNCEMENT_CREATE_ERROR",
   };
  */
 
@@ -55,6 +59,25 @@ export function advertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 rentAnnouncementsPending: false,
+                error: action.payload
+            }
+
+
+        case actionTypes.RENT_ANNOUNCEMENT_CREATE_PENDING: 
+            return {
+                ...state,
+                creationPending: true
+            }
+        case actionTypes.RENT_ANNOUNCEMENT_CREATE_SUCCESS:
+            return {
+                ...state,
+                creationPending: false,
+                announcement: action.payload
+            }
+        case actionTypes.RENT_ANNOUNCEMENT_CREATE_ERROR:
+            return {
+                ...state,
+                creationPending: false,
                 error: action.payload
             }
         default: 

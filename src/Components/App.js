@@ -15,17 +15,13 @@ class App extends React.Component {
     return (
         <BrowserRouter>
             <Switch>
+                <Route path="/" exact component={AdvertismentsPage}/>
                 <Route path="/auth" exact component={LoginPage}/>
                 <Route path="/reg" exact component={RegistrationPage}/>
-
                 <Route path="/adv" exact component={RentRequestListContainer}/>
-                <Route path="/" exact component={AdvertismentsPage}/>
-
-                <Route path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={false}/>}/>
+                <Route path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
                 <Route path="/adv/request/new" exact render ={ (props)=> <RequestPage create={false}/>}/>
-
                 <Route path="/adv/:id" exact component={AuthComponent}/>
-
                 <Route path="/profile" exact component={AuthComponent}/>
             </Switch>
         </BrowserRouter>

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header";
-import RentalAnnouncementModel from "../RentalAnnouncementModel";
+//import RentalAnnouncementModel from "../RentalAnnouncementModel";
+import RentalAnnouncementModel from "../../Containers/AnnouncementItemContainer";
 
 class AnnouncementPage extends React.Component {
 
@@ -18,7 +19,7 @@ class AnnouncementPage extends React.Component {
         Area : 228,
         Address : "Address Address Address Address Address Address",
         Cost: 1000,
-        Location : [10,10],
+        Location : "[53.874761669583464, 27.557525634765586]",
         Images : "132435543345"
     };
 
