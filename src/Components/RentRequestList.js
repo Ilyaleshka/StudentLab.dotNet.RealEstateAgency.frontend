@@ -3,10 +3,6 @@ import RentalRequest from './RentalRequestModel'
 
 class RentalRequestList extends React.Component {
 
-  constructor() {
-    super();
-    };
-
   render(){
     return ( 
     <div>

@@ -3,10 +3,6 @@ import "../Styles/ModelInput.css"
 
 class ModelInput extends React.Component {
 
-  constructor() {
-    super();
-  }
-
   render(){
     let label = this.props.label ? this.props.label : this.props.placeholder;
     return ( 

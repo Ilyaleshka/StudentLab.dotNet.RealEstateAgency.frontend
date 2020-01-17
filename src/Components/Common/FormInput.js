@@ -3,10 +3,6 @@ import "../Styles/FormInput.css"
 
 class FormInput extends React.Component {
 
-  constructor() {
-    super();
-  }
-
   render(){
     let label = this.props.label ? this.props.label : this.props.placeholder;
     return ( 

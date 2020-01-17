@@ -2,7 +2,6 @@ import React from "react";
 import Input from "./Common/ModelInput";
 import "./Styles/RentalAnnouncementModel.css"
 import ModelTextArea from "./Common/ModelTextArea";
-import CustomMap from "./Common/CustomMap";
 import LocationPicker from "./Common/LocationPicker";
 import MultipleImageUploadComponent from "./Common/ImageLoader";
 import Button from "./Common/Button";
@@ -17,14 +16,15 @@ class RentalAnnouncementModel extends React.Component {
         Address: "",
         Cost: 0,
         Location: "[]",
-        Base64Images: []
+        Base64Images: [],
+        FilesInfo: []
     };
 
     constructor(props) {
         super();
 
-        if(props.create == false)
-            this.state = props.model;
+        if(props.create === false)
+            this.state = {...props.model};
 
     };
 
@@ -34,7 +34,8 @@ class RentalAnnouncementModel extends React.Component {
         //VALIDATION FUNCTION HERE
 
         ///CREATE HANDLER FROM PROPS HERE
-        this.props.createHandler(this.state.Title, this.state.Description, this.state.Area, this.state.Address, this.state.Cost, this.state.Location, this.state.Base64Images);
+        let images =  this.state.Base64Images.map(base64img => base64img.replace(/data:.+?,/, ""));
+        this.props.createHandler(this.state.Title, this.state.Description, this.state.Area, this.state.Address, this.state.Cost, this.state.Location,images);
 
         this.setState({
             Title: "",
@@ -42,7 +43,9 @@ class RentalAnnouncementModel extends React.Component {
             Area: 0,
             Address: "",
             Cost: 0,
-            Location: []
+            Location: "[]",
+            Base64Images: [],
+            FilesInfo: []
         });
     }
 
@@ -51,7 +54,8 @@ class RentalAnnouncementModel extends React.Component {
     addressChangeHandler = (event) => { this.setState({Address: event.target.value }); };
     priceChangeHandler = (event) => { this.setState({Cost: event.target.value }); };
     descriptionChangeHandler = (event) => { this.setState({Description: event.target.value }); };
-    locationHandleChangeFunction = (location) =>{this.setState({ Location: location });};
+    locationChangeHandler = (location) =>{this.setState({ Location: location });};
+    imagesChangeHandler = (images, info) =>{this.setState({ Base64Images: images, FilesInfo: info });};
 
     render(){
 
@@ -66,10 +70,10 @@ class RentalAnnouncementModel extends React.Component {
                     <Input label="Cost ($)" type="number" placeholder="Cost" value={this.state.Cost} onChange={this.priceChangeHandler}/>
                 </div>
                 <div>
-                    <LocationPicker value={this.state.Location} onChange={this.locationHandleChangeFunction}/>
+                    <LocationPicker value={this.state.Location} onChange={this.locationChangeHandler}/>
                 </div>
-                <ModelTextArea label="Description" type="text" placeholder="Description" value={this.state.Description} onChange={this.descriptionChangeHandler}/>
-                <MultipleImageUploadComponent/>
+                <ModelTextArea label="Description" type="text" placeholder="Description" value={ this.state.Description } onChange={ this.descriptionChangeHandler }/>
+                <MultipleImageUploadComponent base64Images={ this.state.Base64Images } filesInfo={ this.state.FilesInfo } onChange={ this.imagesChangeHandler }/>
                 <Button value="Create"/>
             </form>
         </React.Fragment>

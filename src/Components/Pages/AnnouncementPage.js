@@ -5,11 +5,6 @@ import RentalAnnouncementModel from "../../Containers/AnnouncementItemContainer"
 
 class AnnouncementPage extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-
   render(){
 
     let userModel =     

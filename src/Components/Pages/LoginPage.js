@@ -4,11 +4,6 @@ import AuthFormContainer from "../../Containers/AuthFormContainer";
 
 class LoginPage extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-
   render(){
     return(
         <React.Fragment>

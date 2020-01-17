@@ -1,14 +1,8 @@
 import React from "react";
 import Header from "../Header";
-import RentalAnnouncementModel from "../RentalAnnouncementModel";
 import RentalRequestItem from "../RentalRequestModel";
 
 class RequestPage extends React.Component {
-
-  constructor() {
-    super();
-  }
-
 
   render(){
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch,Route} from 'react-router-dom'
 
 import AuthComponent from './AuthForm';
-import RegistrationComponent from './RegistrationForm';
 import RentRequestListContainer from '../Containers/RentRequestListContainer';
 import AdvertismentsPage from './Pages/AdvertismentsPage';
 import LoginPage from './Pages/LoginPage';

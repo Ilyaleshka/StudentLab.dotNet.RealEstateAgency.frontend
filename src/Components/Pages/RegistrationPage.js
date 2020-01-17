@@ -4,11 +4,6 @@ import RegistrationFormContainer from "../../Containers/RegistrationFormContaine
 
 class RegistrationPage extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-
   render(){
     return(
         <React.Fragment>

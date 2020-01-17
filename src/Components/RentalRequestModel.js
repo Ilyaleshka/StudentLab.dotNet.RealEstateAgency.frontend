@@ -21,7 +21,7 @@ class RentalRequestItem extends React.Component {
   constructor(props) {
     super();
 
-    if(props.create == false)
+    if(props.create === false)
       this.state = { ...props.model };
 
   };

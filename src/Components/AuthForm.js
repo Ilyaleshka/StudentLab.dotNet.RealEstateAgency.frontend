@@ -1,5 +1,5 @@
 import React from "react";
-import {Link,withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import Input from "./Common/FormInput";
 import Button from "./Common/Button";
 import './Styles/AuthForm.css';
