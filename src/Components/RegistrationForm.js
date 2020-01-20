@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "./Common/FormInput";
-import Button from "./Common/Button";
+import Button from "./Common/SubmitButton";
 import "./Styles/RegForm.css"
 
 class RegForm extends React.Component {

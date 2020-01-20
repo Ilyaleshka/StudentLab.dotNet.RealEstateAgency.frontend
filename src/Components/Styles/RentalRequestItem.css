@@ -1,4 +1,4 @@
-form.RentalRequestModel
+form.RentalRequestItem
 {
   align-items: center;
   justify-content: space-around;
@@ -11,14 +11,14 @@ form.RentalRequestModel
     border-radius: 10px;
 }
 
-h1.RentalRequestModel
+h1.RentalRequestItem
 {
     padding: 20px;
     width: 270px;
     margin: 100px auto 0 auto;
 }
 
-.RentalRequestModel .ModelInput {   
+.RentalRequestItem .ModelInput {   
     padding: 1px;
     width: 300px;
     margin: 10px auto;
@@ -26,7 +26,7 @@ h1.RentalRequestModel
   }
 
   
-.RentalRequestModel .ModelTextArea{   
+.RentalRequestItem .ModelTextArea{   
     padding: 1px;
     width: 680px;
     margin: 10px auto;

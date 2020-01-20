@@ -1,7 +1,7 @@
 import React from "react";
 import {withRouter} from 'react-router-dom';
 import Input from "./Common/FormInput";
-import Button from "./Common/Button";
+import Button from "./Common/SubmitButton";
 import './Styles/AuthForm.css';
 
 class AuthForm extends React.Component {

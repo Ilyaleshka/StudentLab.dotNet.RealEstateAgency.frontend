@@ -1,0 +1,18 @@
+.RentalRequestListItem
+{
+    display: block;
+    position: relative;
+    padding: 20px;
+    margin: 10px auto 5px auto;
+
+    background-color: rgb(32, 38, 40);
+    border-radius: 10px;
+    color: #cccccc;
+}
+
+.RentalRequestListItem .InfoField
+{
+    overflow: hidden; /* Обрезаем содержимое */
+    text-overflow: ellipsis; /* Многоточие */
+    max-height: 125px;
+}

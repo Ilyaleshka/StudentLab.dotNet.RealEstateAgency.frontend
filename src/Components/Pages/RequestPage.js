@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header";
-import RentalRequestItem from "../RentalRequestModel";
+import RentalRequestItemContainer from "../../Containers/RentalRequestItemContainer";
 
 class RequestPage extends React.Component {
 
@@ -21,7 +21,7 @@ class RequestPage extends React.Component {
     return(
         <React.Fragment>
             <Header isLoggedIn="false" />
-            <RentalRequestItem create={this.props.create} model={userModel}/>
+            <RentalRequestItemContainer create={this.props.create} model={userModel}/>
         </React.Fragment>
     );
   }

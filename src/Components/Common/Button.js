@@ -4,10 +4,12 @@ import "../Styles/Button.css"
 class Button extends React.Component {
 
   render(){
+
+
     return ( 
-        <input  className="Button"
-                type="submit"
-                value={this.props.value}/>
+        <button  className="Button" onClick={this.props.onClick}>
+                    {this.props.value}
+        </button>
     )
   };
 };

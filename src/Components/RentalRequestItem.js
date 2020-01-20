@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import Input from "./Common/ModelInput";
 import ModelTextArea from "./Common/ModelTextArea";
-import Button from "./Common/Button";
-import './Styles/RentalRequestModel.css'
+import Button from "./Common/SubmitButton";
+import './Styles/RentalRequestItem.css'
 
 // 'Model' is not a good name for a component, probably something like 'Item' will look better
 class RentalRequestItem extends React.Component {
@@ -13,9 +13,8 @@ class RentalRequestItem extends React.Component {
       Title: "",
       Description: "",
       Area: 0,
-      Address: "",
+      PrefferedAddress: "",
       MaxPrice: 0,
-      Location: []
   };
 
   constructor(props) {
@@ -32,14 +31,30 @@ class RentalRequestItem extends React.Component {
   priceChangeHandler = (event) => { this.setState({MaxPrice: event.target.value }); };
   descriptionChangeHandler = (event) => { this.setState({Description: event.target.value }); };
 
-//onSubmit={this.submitHandler}
+  submitHandler = (evt) => {
+    evt.preventDefault();
+
+    //VALIDATION FUNCTION HERE
+
+    ///CREATE HANDLER FROM PROPS HERE
+    this.props.createHandler(this.state.Title, this.state.Description, this.state.Area, this.state.PrefferedAddress, this.state.MaxPrice);
+
+    this.setState({
+      Title: "",
+      Description: "",
+      Area: 0,
+      PrefferedAddress: "",
+      MaxPrice: 0,
+    });
+  }
+
 
   render(){
 
     return ( 
     <React.Fragment>
-        <h1 className="RentalRequestModel">RENTAL REQUEST</h1>
-        <form className="RentalRequestModel">
+        <h1 className="RentalRequestItem">RENTAL REQUEST</h1>
+        <form className="RentalRequestItem" onSubmit={this.submitHandler}>
             <Input label="Title" type="text" placeholder="Title" value={this.state.Title} onChange={this.titleChangeHandler }/>
             <Input label="Area" type="number" placeholder="Area" value={this.state.Area} onChange={this.areaChangeHandler }/>
             <Input label="Preffered address" type="text" placeholder="Preffered address" value={this.state.PrefferedAddress} onChange={this.addressChangeHandler }/>

@@ -9,7 +9,11 @@ import {
 
     rentAnnouncementCreatePending,
     rentAnnouncementCreateSuccess,
-    rentAnnouncementCreateError
+    rentAnnouncementCreateError,
+
+    rentRequestCreatePending,
+    rentRequestCreateSuccess,
+    rentRequestCreateError,
 } from '../ActionCreators/advertisements';
 
 
@@ -17,7 +21,7 @@ function requestAdvertisements() {
     return async dispatch => {
         dispatch(rentAnnouncementPending());
         try {
-            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/rentalAnnouncements',
+            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/announcements',
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -41,7 +45,7 @@ function requestAdvertisements() {
 
         dispatch(rentRequestPending());
         try {
-            let rentRequestsResponse = await fetch('https://localhost:44305/api/rentalRequests');
+            let rentRequestsResponse = await fetch('https://localhost:44305/api/requests');
 
             if(!rentRequestsResponse.ok){
                 dispatch(rentRequestError(rentRequestsResponse));
@@ -61,7 +65,7 @@ function requestAnnouncements() {
     return async dispatch => {
         dispatch(rentAnnouncementPending());
         try {
-            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/rentalAnnouncements',
+            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/announcements',
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -88,7 +92,7 @@ function requestRentRequests() {
     return async dispatch => {
         dispatch(rentRequestPending());
         try {
-            let rentRequestsResponse = await fetch('https://localhost:44305/api/rentalRequests');
+            let rentRequestsResponse = await fetch('https://localhost:44305/api/requests');
 
             if(!rentRequestsResponse.ok){
                 dispatch(rentRequestError(rentRequestsResponse));
@@ -154,5 +158,52 @@ function  createAdvertisement(title, description, area, address, cost, location,
     }
 }
 
+function  createRentalRequest(title, description, area, address, cost)
+{
+    let advertisementInfo = 
+    {
+        Title : title,
+        Description : description,
+        Area : area,
+        PrefferedAddress : address,
+        MaxPrice : cost,
+    };
+    
+    return async dispatch => {
+        dispatch(rentRequestCreatePending());
+        try{
+            let responce = await fetch('https://localhost:44305/api/requests/create',{
+                method:'post',  
+                mode: 'cors', // no-cors, cors, *same-origin
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(advertisementInfo)
+            });          //TODO
 
-export { requestAdvertisements, requestRentRequests, requestAnnouncements, createAdvertisement};
+            console.log(responce);
+            if(!responce.ok)
+            {
+                if(responce.bodyUsed)
+                {
+                    let errorBody = await responce.json();
+                    dispatch(rentRequestCreateError(errorBody));
+                }
+                else
+                    dispatch(rentRequestCreateError("Error occured"));
+
+                return;
+            }
+            
+            let respBody = await responce.json();
+            dispatch(rentRequestCreateSuccess(respBody ));
+        }
+        catch(e){
+            dispatch(rentRequestCreateError(e));
+        }
+    }
+}
+
+
+export { requestAdvertisements, requestRentRequests, requestAnnouncements,createRentalRequest , createAdvertisement};

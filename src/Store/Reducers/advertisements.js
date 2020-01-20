@@ -80,6 +80,25 @@ export function advertisementsReducer(state = initialState, action) {
                 creationPending: false,
                 error: action.payload
             }
+
+        
+        case actionTypes.RENT_REQUEST_CREATE_PENDING: 
+            return {
+                ...state,
+                creationPending: true
+            }
+        case actionTypes.RENT_REQUEST_CREATE_SUCCESS:
+            return {
+                ...state,
+                creationPending: false,
+                request: action.payload
+            }
+        case actionTypes.RENT_REQUEST_CREATE_ERROR:
+            return {
+                ...state,
+                creationPending: false,
+                error: action.payload
+            }
         default: 
             return state;
     }
