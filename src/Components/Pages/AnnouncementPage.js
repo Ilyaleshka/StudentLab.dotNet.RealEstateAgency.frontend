@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../../Containers/HeaderContainer";
 //import RentalAnnouncementModel from "../RentalAnnouncementModel";
 import RentalAnnouncementModel from "../../Containers/AnnouncementItemContainer";
 
@@ -20,7 +20,7 @@ class AnnouncementPage extends React.Component {
 
     return(
         <React.Fragment>
-            <Header isLoggedIn="false" />
+            <Header />
             <RentalAnnouncementModel create={this.props.create} model={userModel}/>
         </React.Fragment>
     );

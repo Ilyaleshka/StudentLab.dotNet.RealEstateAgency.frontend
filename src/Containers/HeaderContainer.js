@@ -1,5 +1,17 @@
 import {withRouter} from 'react-router-dom';
-import './Styles/Header.css';
+import '../Components/Styles/Header.css';
 import Header from "../Components/Header";
+import { connect } from 'react-redux';
+import {logoutUser} from '../Store/AsyncActionCreators/authorization';
 
-  export default withRouter(Header);
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.authorizationReducer.isLoggedIn
+});
+
+const mapDispatchToProps = {
+  logoutHandler: logoutUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
+
+//export default withRouter(Header);

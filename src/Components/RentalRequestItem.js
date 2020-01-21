@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from 'react-router-dom';
 import Input from "./Common/ModelInput";
 import ModelTextArea from "./Common/ModelTextArea";
 import Button from "./Common/SubmitButton";
@@ -46,6 +45,8 @@ class RentalRequestItem extends React.Component {
       PrefferedAddress: "",
       MaxPrice: 0,
     });
+
+    //this.props.history.push("/adv");
   }
 
 

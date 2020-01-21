@@ -1,0 +1,52 @@
+.SearchForm div.Menu
+{
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    background-color: rgb(32, 38, 40);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.SearchForm div.Filters
+{
+    display: inline-block;
+    width: 200px;
+    height: 330px;
+    background-color: rgb(32, 38, 40);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.SearchForm div.right_content
+{
+    vertical-align:top;
+    display: inline-block;
+    width: 230px;
+    margin: 10px 0;
+}
+
+.SearchForm div.Content
+{
+    display: inline-block;
+    margin: 10px;
+    width: auto;
+}
+
+.SearchForm
+{
+    width: 1000px;
+    margin: auto;
+    display: block;
+}
+
+.SearchForm .Button
+{
+    width: 150px;
+    font-size: 10px;
+}
+
+.SearchForm .ModelInput{
+    width : 150px;
+    margin: auto;
+}

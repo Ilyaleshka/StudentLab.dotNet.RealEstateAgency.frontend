@@ -18,7 +18,8 @@ class Header extends React.Component {
     }
   
     handleLogOutClick = () => {
-      this.props.history.push("/auth");//TODO
+      if(this.props.logoutHandler)
+        this.props.logoutHandler();//TODO
     }
   
     render(){

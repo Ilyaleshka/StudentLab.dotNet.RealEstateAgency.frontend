@@ -1,4 +1,4 @@
-import {authorizationPending, authorizationSuccess, authorizationError} from '../ActionCreators/authorization';
+import {authorizationPending, authorizationSuccess, authorizationError, logout} from '../ActionCreators/authorization';
 
 /*
 {
@@ -50,24 +50,18 @@ function authorizeUser(name,password) {
 }
 
 function logoutUser() {
-    return dispatch => {
-        dispatch(authorizationPending());
-        fetch('https://localhost:44305/api/account/logout',{method:'get'})             //TODO
-        .then(res => 
-            {
-                console.log(res);
-                if(!res.ok) {
-                    throw(res.json());
-                }
-                return res.json()
-            })
-        .then(res => {
-            dispatch(authorizationSuccess(res));
-        })
-        .catch(error => {
-            dispatch(authorizationError(error));
-        })
-    }
+    return async dispatch => {
+        dispatch(logout());
+        try{
+            await fetch('https://localhost:44305/api/account/logout',{method:'get'});     
+        }
+        catch
+        {
+            
+        }
+    };
 }
+
+
 
 export {authorizeUser,logoutUser};

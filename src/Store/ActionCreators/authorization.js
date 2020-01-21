@@ -19,3 +19,9 @@ export function authorizationError(error) {
     payload: error
   };
 }
+
+export function logout(data) {
+  return {
+    type: actionTypes.LOGOUT,
+  };
+}

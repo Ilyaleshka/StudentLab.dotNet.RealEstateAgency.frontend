@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../../Containers/HeaderContainer";
 import RegistrationFormContainer from "../../Containers/RegistrationFormContainer";
 
 class RegistrationPage extends React.Component {
@@ -7,7 +7,7 @@ class RegistrationPage extends React.Component {
   render(){
     return(
         <React.Fragment>
-            <Header isLoggedIn="" />
+            <Header/>
             <RegistrationFormContainer/>
         </React.Fragment>
     );

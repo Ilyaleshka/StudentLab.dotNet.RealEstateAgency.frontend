@@ -7,8 +7,8 @@ class FormInput extends React.Component {
     let label = this.props.label ? this.props.label : this.props.placeholder;
     return ( 
       <div className="FormInput">
-        <label htmlFor="Input_input" >{label}</label>        
-        <input  id="Input_input"
+        <label >{label}</label>        
+        <input 
                 type={this.props.type}
                 placeholder={this.props.placeholder}
                 value={this.props.value}

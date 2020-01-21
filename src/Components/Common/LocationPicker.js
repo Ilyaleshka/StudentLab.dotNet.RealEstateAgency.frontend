@@ -26,7 +26,7 @@ export default class LocationPicker extends React.Component {
             default: 
             {
               center:  mapCenter,
-              zoom: 8
+              zoom: 12
             }
           };
         }
@@ -56,7 +56,7 @@ export default class LocationPicker extends React.Component {
     catch
     {
       flag = false;
-      return null;
+      //return null;
     }
 
     return (

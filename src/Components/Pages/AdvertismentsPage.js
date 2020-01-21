@@ -1,16 +1,14 @@
 import React from "react";
-import Header from "../Header";
-import AnnouncementsListContainer from "../../Containers/AnnouncementsListContainer";
-import RentRequestListContainer from "../../Containers/RentRequestListContainer";
+import Header from "../../Containers/HeaderContainer";
+import SearchForm from "../../Containers/SearchFormContainer";
 
 class AdvertismentsPage extends React.Component {
 
   render(){
     return(
       <React.Fragment>
-       <Header isLoggedIn="false"/>
-       <AnnouncementsListContainer/>
-       <RentRequestListContainer/>
+        <Header/>
+        <SearchForm/>
       </React.Fragment>
     );
   }

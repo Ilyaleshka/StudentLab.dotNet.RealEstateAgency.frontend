@@ -5,20 +5,31 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './Components/App';
 import { Provider } from 'react-redux';
-import { createStore, compose, combineReducers ,applyMiddleware } from 'redux';
-import {registrationReducer} from './Store/Reducers/registration';
-import {authorizationReducer} from './Store/Reducers/authorization';
-import {advertisementsReducer} from './Store/Reducers/advertisements';
+import { createStore, compose ,applyMiddleware } from 'redux';
+
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+
+import rootReducer from "./Store/Reducers"
 import thunkMiddleware from 'redux-thunk';
 
-// you can create index.js in reducers folder and create rootreducer there
-var rootreducer = combineReducers({registrationReducer,advertisementsReducer,authorizationReducer});
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
+ };
+
+const pReducer = persistReducer(persistConfig, rootReducer);
 
 const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f,
   applyMiddleware(thunkMiddleware)
 );
-const store = createStore(rootreducer, enhancers);
+
+const store = createStore(pReducer, enhancers);
+const persistor = persistStore(store);
 
 // Redux dev tools browser extension is pretty helpful
 store.subscribe(() => {
@@ -27,7 +38,9 @@ store.subscribe(() => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <PersistGate persistor={persistor}>
+        <App />  
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );
