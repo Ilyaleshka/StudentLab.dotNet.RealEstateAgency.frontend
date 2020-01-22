@@ -3,6 +3,7 @@ import InfoField from "./Common/InfoField";
 import LocationPicker from "./Common/LocationPicker";
 import "./Styles/RentalAnnouncementListItem.css"
 import Button from "./Common/Button";
+import ImageViewer from "./Common/ImageViewer";
 
 class RentalAnnouncementListItem extends React.Component {
   render(){
@@ -21,13 +22,14 @@ class RentalAnnouncementListItem extends React.Component {
       <InfoField label="Address" value= {this.props.model.Address}/>
       <InfoField label="Cost" value= {this.props.model.Cost}/>
       <InfoField label="Description" value= {this.props.model.Description}/>
+  
       </div >
       <Button value="More" onClick={this.props.onClick}/>
     </div>
     )
   };
 }
-
+// <ImageViewer images={this.props.model.Images}/>
 
 export default   RentalAnnouncementListItem;
 

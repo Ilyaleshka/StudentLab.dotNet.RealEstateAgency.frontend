@@ -7,12 +7,14 @@ import LoginPage from './Pages/LoginPage';
 import RegistrationPage from './Pages/RegistrationPage';
 import AnnouncementPage from './Pages/AnnouncementPage';
 import RequestPage from './Pages/RequestPage';
+import PrivateRoute from '../Containers/PrivateRoute';
  
 class App extends React.Component {
   render() {
     return (
         <BrowserRouter>
             <Switch>
+                <PrivateRoute path="/profile" exact component={AdvertismentsPage}/>
                 <Route path="/" exact component={AdvertismentsPage}/>
                 <Route path="/auth" exact component={LoginPage}/>
                 <Route path="/reg" exact component={RegistrationPage}/>
@@ -20,7 +22,7 @@ class App extends React.Component {
                 <Route path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
                 <Route path="/adv/request/new" exact render ={ (props)=> <RequestPage create={true}/>}/>
                 <Route path="/adv/:id" exact component={AuthComponent}/>
-                <Route path="/profile" exact component={AuthComponent}/>
+
             </Switch>
         </BrowserRouter>
     );
@@ -31,3 +33,4 @@ export default App;
 
 
 // <Route path="/adv/new" exact rendrcomponent={AdvertismentsPage}/>
+                /*<Route path="/profile" exact component={AuthComponent}/>*/

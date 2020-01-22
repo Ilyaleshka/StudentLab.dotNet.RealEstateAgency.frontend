@@ -20,8 +20,8 @@ export default class LocationPicker extends React.Component {
       try
       {
         let location = JSON.parse(props.value);
-        if(Array.isArray(location) && location.length == 2){
-          let mapCenter = (location.length == 2) ? location : [53.90124551182249, 27.5510288551673];
+        if(Array.isArray(location) && location.length === 2){
+          let mapCenter = (location.length === 2) ? location : [53.90124551182249, 27.5510288551673];
           this.state = {
             default: 
             {

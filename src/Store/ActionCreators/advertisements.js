@@ -88,6 +88,29 @@ export function rentRequestCreateError(error) {
     payload: error
   };
 }
+
+
+  
+export function rentAnnouncementInfoPending() {
+  return {
+    type: actionTypes.RENT_REQUEST_CREATE_PENDING,
+  };
+}
+
+
+export function rentAnnouncementInfoSuccess(data) {
+  return {
+    type: actionTypes.RENT_REQUEST_CREATE_SUCCESS,
+    payload: data
+  };
+}
+
+export function rentAnnouncementInfoError(error) {
+  return {
+    type: actionTypes.RENT_REQUEST_CREATE_ERROR,
+    payload: error
+  };
+}
   
 
 
@@ -103,4 +126,8 @@ export function rentRequestCreateError(error) {
     RENT_ANNOUNCEMENT_CREATE_PENDING: "RENT_ANNOUNCEMENT_CREATE_PENDING",
     RENT_ANNOUNCEMENT_CREATE_SUCCESS: "RENT_ANNOUNCEMENT_CREATE_SUCCESS",
     RENT_ANNOUNCEMENT_CREATE_ERROR: "RENT_ANNOUNCEMENT_CREATE_ERROR",
+
+        RENT_ANNOUNCEMENT_INFO_PENDING: "RENT_ANNOUNCEMENT_INFO_PENDING",
+    RENT_ANNOUNCEMENT_INFO_SUCCESS: "RENT_ANNOUNCEMENT_INFO_SUCCESS",
+    RENT_ANNOUNCEMENT_INFO_ERROR: "RENT_ANNOUNCEMENT_INFO_ERROR",
 */ 

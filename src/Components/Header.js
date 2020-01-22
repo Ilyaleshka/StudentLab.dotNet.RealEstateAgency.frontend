@@ -6,7 +6,7 @@ import './Styles/Header.css';
 class Header extends React.Component {
     
     handleProfileClick = () => {
-      this.props.history.push("/auth");//TODO
+      this.props.history.push("/profile");//TODO
     }
   
     handleAnnouncementClick = () => {
@@ -30,7 +30,7 @@ class Header extends React.Component {
               <nav>
                   <ul>
                       <li><NavButton text="Announcements" handleToggleClick={ this.handleAnnouncementClick }/></li>
-                      <li>{ this.props.isLoggedIn && <NavButton text="Profile" handleToggleClick={ this.handleLogInClick }/> }</li>
+                      <li>{ this.props.isLoggedIn && <NavButton text="Profile" handleToggleClick={ this.handleProfileClick }/> }</li>
                       <li>{ this.props.isLoggedIn ? 
                       (
                           <NavButton text="Log Out" handleToggleClick={ this.handleLogOutClick}/>
