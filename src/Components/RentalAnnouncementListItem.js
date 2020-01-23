@@ -22,7 +22,6 @@ class RentalAnnouncementListItem extends React.Component {
       <InfoField label="Address" value= {this.props.model.Address}/>
       <InfoField label="Cost" value= {this.props.model.Cost}/>
       <InfoField label="Description" value= {this.props.model.Description}/>
-  
       </div >
       <Button value="More" onClick={this.props.onClick}/>
     </div>
