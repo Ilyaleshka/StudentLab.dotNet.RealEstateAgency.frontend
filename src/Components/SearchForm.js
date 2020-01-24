@@ -26,7 +26,7 @@ class SearchForm extends React.Component {
     createRequestsHandler = () => { this.props.history.push("/adv/request/new"); };
     createAnnouncementHandler = () => { this.props.history.push("/adv/announcement/new"); };
 
-    filterHandler = () => {  }; //TODO
+    filterHandler = () => { this.props.updateFilters({...this.state}) }; //TODO
 
     render(){
     return ( 
@@ -43,7 +43,7 @@ class SearchForm extends React.Component {
                     <Input type="number" value={this.state.maxCost} onChange={this.maxCostHandler} label="Max cost"/>
                     <Input type="number" value={this.state.minArea} onChange={this.minAreaHandler} label="Min area"/>
                     <Input type="number" value={this.state.maxArea} onChange={this.maxAreaHandler} label="Max area"/>
-                    <Button value="Filter"/>
+                    <Button value="Filter" onClick={ this.filterHandler }/>
                 </div>
             </div>
             <div className="Content">

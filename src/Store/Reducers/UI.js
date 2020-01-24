@@ -14,11 +14,6 @@ export function UIReducer(state = initialState, action) {
                 pageNumber: 1,
                 pageContentType : action.payload
             }
-        case actionTypes.PAGE_NUMBER_CHANGED:
-            return {
-                ...state,
-                pageNumber: action.payload,
-            }
         case actionTypes.PAGE_SIZE_CHANGED:
             return {
                 ...state,

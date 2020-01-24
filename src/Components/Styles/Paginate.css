@@ -1,0 +1,19 @@
+  
+ul.pagination {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pagination li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 13px;
+    background-color: rgb(32, 38, 40);
+    color:  #ccc;
+    margin: 1px;
+    border-radius: 5px;
+}
+
+.pagination li.active {
+    background-color: #FF8C39
+}

@@ -19,8 +19,8 @@ class App extends React.Component {
                 <Route path="/auth" exact component={LoginPage}/>
                 <Route path="/reg" exact component={RegistrationPage}/>
                 <Route path="/adv" exact component={AdvertismentsPage}/>
-                <Route path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
-                <Route path="/adv/request/new" exact render ={ (props)=> <RequestPage create={true}/>}/>
+                <PrivateRoute  path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
+                <PrivateRoute  path="/adv/request/new" exact render ={ (props)=> <RequestPage create={true}/>}/>
                 <Route path="/adv/:id" exact component={AuthComponent}/>
 
             </Switch>

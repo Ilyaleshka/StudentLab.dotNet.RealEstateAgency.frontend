@@ -14,20 +14,20 @@ import {
     rentRequestCreatePending,
     rentRequestCreateSuccess,
     rentRequestCreateError,
+
 } from '../ActionCreators/advertisements';
 
 
-function requestAdvertisements() {
+function requestAdvertisements(pageNumber,pageSize) {
     return async dispatch => {
         dispatch(rentAnnouncementPending());
+        dispatch(rentAnnouncementPending());
         try {
-            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/announcements',
+            let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/announcements?page=${pageNumber}&pageSize=${pageSize}`,
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
-                    credentials: "include" //"same-origin",//'include'
-                    //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                    //credentials: 'same-origin', // include, *same-origin, omit
+                    credentials: "same-origin",//'include'
                 }
             );
 
@@ -38,6 +38,7 @@ function requestAdvertisements() {
             
             let rentAnnouncementsJson = await rentAnnouncementsResponse.json();
             dispatch(rentAnnouncementSuccess(rentAnnouncementsJson));
+
         } catch (error) {
             dispatch(rentAnnouncementError(error));
             return;
@@ -61,11 +62,12 @@ function requestAdvertisements() {
     }
 }
 
-function requestAnnouncements() {
+function requestAnnouncements(pageNumber,pageSize,filt = {}) {
     return async dispatch => {
         dispatch(rentAnnouncementPending());
+        let filters =  createFilterQuery(filt);
         try {
-            let rentAnnouncementsResponse = await fetch('https://localhost:44305/api/announcements',
+            let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/announcements?page=${pageNumber}&pageSize=${pageSize}` + filters,
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -88,11 +90,12 @@ function requestAnnouncements() {
     }
 }
 
-function requestRentRequests() {
+function requestRentRequests(pageNumber,pageSize,filt = {}) {
     return async dispatch => {
         dispatch(rentRequestPending());
+        let filters =  createFilterQuery(filt);
         try {
-            let rentRequestsResponse = await fetch('https://localhost:44305/api/requests');
+            let rentRequestsResponse = await fetch(`https://localhost:44305/api/requests?page=${pageNumber}&pageSize=${pageSize}` + filters);
 
             if(!rentRequestsResponse.ok){
                 dispatch(rentRequestError(rentRequestsResponse));
@@ -107,6 +110,21 @@ function requestRentRequests() {
             return;
         }
     }
+}
+
+function createFilterQuery(filters)
+{
+    let result = "";
+    if(filters.minCost && (filters.minCost > 0))
+        result += "&minCost=" + filters.minCost;
+    if(filters.maxCost && (filters.maxCost > 0))
+        result += "&maxCost=" + filters.maxCost;
+    if(filters.minArea && (filters.minArea > 0))
+        result += "&minArea=" + filters.minArea;
+    if(filters.maxArea && (filters.maxArea > 0))
+        result += "&maxArea=" + filters.maxArea;
+
+    return result;
 }
 
 function  createAdvertisement(title, description, area, address, cost, location, base64Images)

@@ -5,7 +5,11 @@ export const initialState = {
     rentAnnouncements: [],
     rentRequestsPending: false,
     rentAnnouncementsPending: false,
-    error: null
+    error: null,
+    pageSize: 5,
+    currentPage: 1,
+    pageCount: 0,
+    filters: {}
 }
 
 /*
@@ -18,7 +22,7 @@ export const actionTypes = {
     RENT_ANNOUNCEMENT_SUCCESS: "RENT_ANNOUNCEMENT_SUCCESS",
     RENT_ANNOUNCEMENT_ERROR: "RENT_ANNOUNCEMENT_ERROR",
 
-        RENT_ANNOUNCEMENT_CREATE_PENDING: "RENT_ANNOUNCEMENT_CREATE_PENDING",
+    RENT_ANNOUNCEMENT_CREATE_PENDING: "RENT_ANNOUNCEMENT_CREATE_PENDING",
     RENT_ANNOUNCEMENT_CREATE_SUCCESS: "RENT_ANNOUNCEMENT_CREATE_SUCCESS",
     RENT_ANNOUNCEMENT_CREATE_ERROR: "RENT_ANNOUNCEMENT_CREATE_ERROR",
   };
@@ -35,7 +39,10 @@ export function advertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 rentRequestsPending: false,
-                rentRequests: action.payload
+               // rentRequests: action.payload
+                rentRequests: action.payload.RentalRequests,
+                currentPage: action.payload.CurrentPage,
+                pageCount: action.payload.PageCount
             }
         case actionTypes.RENT_REQUESTS_ERROR:
             return {
@@ -53,7 +60,10 @@ export function advertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 rentAnnouncementsPending: false,
-                rentAnnouncements: action.payload
+                rentAnnouncements: action.payload.RentalAnnouncements,
+                currentPage: action.payload.CurrentPage,
+                pageCount: action.payload.PageCount
+
             }
         case actionTypes.RENT_ANNOUNCEMENT_ERROR:
             return {
@@ -98,6 +108,13 @@ export function advertisementsReducer(state = initialState, action) {
                 ...state,
                 creationPending: false,
                 error: action.payload
+            }
+
+        case actionTypes.UPDATE_FILTERS:
+            return {
+                ...state,
+                currentPage: 1,
+               filters: action.payload
             }
         default: 
             return state;

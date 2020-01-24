@@ -35,16 +35,33 @@ export function authorizationReducer(state = initialState, action) {
                 info:{},
                 isLoggedIn: false
             }
+        
+        case actionTypes.USER_INFO_PENDING: 
+            return {
+                ...state,
+                pending: true
+            }
+        case actionTypes.USER_INFO_SUCCESS:
+            return {
+                ...state,
+                pending: false,
+                info: action.payload,
+                isLoggedIn: true
+            }
+        case actionTypes.USER_INFO_ERROR:
+            return {
+                ...state,
+                pending: false,
+                isLoggedIn: false,
+                error: action.payload
+            }
+
         default: 
             return state;
     }
 }
 
-/*
-type: actionTypes.LOGOUT_PENDING,
-};
-}
 
-export function logoutSuccess(data) {
-return {
-  type: actionTypes.LOGOUT_SUCCESS,*/
+//    USER_INFO_PENDING: "USER_INFO_PENDING",
+///USER_INFO_SUCCESS: "USER_INFO_SUCCESS",
+//USER_INFO_ERROR: "USER_INFO_ERROR",

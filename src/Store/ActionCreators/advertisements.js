@@ -112,6 +112,19 @@ export function rentAnnouncementInfoError(error) {
   };
 }
   
+export function changePage(newPageNumber) {
+  return {
+    type: actionTypes.PAGE_NUMBER_CHANGED,
+    payload: newPageNumber
+  };
+}
+
+export function updateFilters(filters) {
+  return {
+    type: actionTypes.UPDATE_FILTERS,
+    payload: filters
+  };
+}
 
 
 /*
@@ -130,4 +143,6 @@ export function rentAnnouncementInfoError(error) {
         RENT_ANNOUNCEMENT_INFO_PENDING: "RENT_ANNOUNCEMENT_INFO_PENDING",
     RENT_ANNOUNCEMENT_INFO_SUCCESS: "RENT_ANNOUNCEMENT_INFO_SUCCESS",
     RENT_ANNOUNCEMENT_INFO_ERROR: "RENT_ANNOUNCEMENT_INFO_ERROR",
+
+        UPDATE_FILTERS: " UPDATE_FILTERS",
 */ 

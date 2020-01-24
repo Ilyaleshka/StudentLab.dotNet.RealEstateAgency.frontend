@@ -1,4 +1,12 @@
-import {authorizationPending, authorizationSuccess, authorizationError, logout} from '../ActionCreators/authorization';
+import {
+    authorizationPending,
+    authorizationSuccess,
+    authorizationError,
+    logout,
+    userInfoError,
+    userInfoPending,
+    userInfoSuccess,
+} from '../ActionCreators/authorization';
 
 /*
 {
@@ -53,7 +61,7 @@ function logoutUser() {
     return async dispatch => {
         dispatch(logout());
         try{
-            await fetch('https://localhost:44305/api/account/logout',{method:'get'});     
+            await fetch('https://localhost:44305/api/account/logout',{method:'post',credentials: "include"});     
         }
         catch
         {
@@ -63,5 +71,39 @@ function logoutUser() {
 }
 
 
+function refreshUserInfo() {
 
-export {authorizeUser,logoutUser};
+    return async dispatch => {
+        dispatch(userInfoPending());
+        try{
+            let responce = await fetch('https://localhost:44305/api/account/info',{
+                method:'post',  
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });          //TODO
+
+            console.log(responce);
+            if(!responce.ok)
+            {
+                if(responce.bodyUsed)
+                {
+                    let errorBody = await responce.json();
+                    dispatch(userInfoError(errorBody));
+                }
+                else
+                    dispatch(userInfoError("Error occured"));
+                return;
+            }
+            
+            let respBody = await responce.json();
+            dispatch(userInfoSuccess(respBody ));
+        }
+        catch(e){
+            dispatch(userInfoError(e));
+        }
+    }
+}
+
+export {authorizeUser,logoutUser,refreshUserInfo};
