@@ -1,0 +1,15 @@
+{
+
+    "manifest_version": 2,
+    "name": "Cookie BG Picker",
+    "version": "1.0",
+  
+    "description": "Allows the user to customize the background color and pattern of their sites. Also saves their preferences via cookies where possible.",
+  
+    "permissions": [
+        "tabs",
+        "cookies",
+        "<all_urls>"
+    ]
+  
+  }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 class PrivateRoute extends React.Component {
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.isLoggedIn)
         return (<Route {...this.props}/>);
     else

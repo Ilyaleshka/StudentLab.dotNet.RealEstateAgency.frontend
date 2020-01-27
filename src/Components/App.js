@@ -8,13 +8,14 @@ import RegistrationPage from './Pages/RegistrationPage';
 import AnnouncementPage from './Pages/AnnouncementPage';
 import RequestPage from './Pages/RequestPage';
 import PrivateRoute from '../Containers/PrivateRoute';
+import UserPage from '../Containers/UserPageContainer';
  
 class App extends React.Component {
   render() {
     return (
         <BrowserRouter>
             <Switch>
-                <PrivateRoute path="/profile" exact component={AdvertismentsPage}/>
+                <PrivateRoute path="/profile" exact component={UserPage}/>
                 <Route path="/" exact component={AdvertismentsPage}/>
                 <Route path="/auth" exact component={LoginPage}/>
                 <Route path="/reg" exact component={RegistrationPage}/>
@@ -26,6 +27,11 @@ class App extends React.Component {
             </Switch>
         </BrowserRouter>
     );
+  }
+
+  componentDidMount()
+  {
+    this.props.refreshUserInfo();
   }
 }
  

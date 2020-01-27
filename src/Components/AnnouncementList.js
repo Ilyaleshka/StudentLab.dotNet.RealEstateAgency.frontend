@@ -18,6 +18,7 @@ class AnnouncementList extends React.Component {
     return ( 
     <div className="AnnouncementList">
         {this.props.rentAnnouncements.map((rentReq) =>  (<RentalAnnouncementItem key={rentReq.Id} model={rentReq}/>))}
+        {(this.props.pageCount > 0 &&
         <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
@@ -30,10 +31,17 @@ class AnnouncementList extends React.Component {
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'}
-        />
+        />)}
     </div>
     )
   };
+
+  componentWillReceiveProps(nextProps)
+  {   //console.log(nextProps.filters != this.props.filters)
+      if(nextProps.filters != this.props.filters)
+        this.props.fetchRentalAnnouncements(1,this.props.pageSize, nextProps.filters);
+  }
+
 
   componentDidMount()
   {
