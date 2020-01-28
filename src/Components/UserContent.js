@@ -5,17 +5,31 @@ import Button from "./Common/Button";
 import "./Styles/SearchForm.css";
 import RequestListContainer from "../Containers/UserRequestListContainer";
 import AnnouncementList from "../Containers/UserAnnouncementListContainer";
+import ReservationContainer from "../Containers/ReservationContainer";
 
 class UserAdvertisement extends React.Component {
 
     switchToAnnouncements = () => { this.props.changePageContentType("announcements"); };
     switchToRequests = () => { this.props.changePageContentType("requests"); };
-    switchToReservations = () => { this.props.changePageContentType("requests"); };
+    switchToReservations = () => { this.props.changePageContentType("reservations"); };
 
     createRequestsHandler = () => { this.props.history.push("/adv/request/new"); };
     createAnnouncementHandler = () => { this.props.history.push("/adv/announcement/new"); };
 
     render(){
+        var content;
+        switch(this.props.contentType)
+        {
+            case "announcements":
+                content = <AnnouncementList/> 
+                break;
+            case "requests":
+                content = <RequestListContainer/> 
+                break;
+            case "reservations":
+                content = <ReservationContainer/> 
+                break;
+        }
     return ( 
         <div className="SearchForm">
             <div className="right_content">
@@ -28,11 +42,7 @@ class UserAdvertisement extends React.Component {
                 </div>
             </div>
             <div className="Content">
-                {
-                    (this.props.contentType === "announcements") 
-                    ? <AnnouncementList/> 
-                    : <RequestListContainer/>
-                }
+                   {content}
             </div>
         </div>
     )

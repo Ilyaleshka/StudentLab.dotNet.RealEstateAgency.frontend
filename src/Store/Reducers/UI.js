@@ -4,6 +4,7 @@ export const initialState = {
     pageSize: 5,
     pageNumber: 1,
     pageContentType : "announcement",
+    profileContentType : "announcement",
 }
 
 export function UIReducer(state = initialState, action) {
@@ -13,6 +14,11 @@ export function UIReducer(state = initialState, action) {
                 ...state,
                 pageNumber: 1,
                 pageContentType : action.payload
+            }
+        case actionTypes.PROFILE_CONTENT_TYPE_CHANGED: 
+            return {
+                ...state,
+                profileContentType : action.payload
             }
         case actionTypes.PAGE_SIZE_CHANGED:
             return {

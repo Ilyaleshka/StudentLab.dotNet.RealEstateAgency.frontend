@@ -14,6 +14,13 @@ export function changePageContentType(contentType) {
   };
 }
 
+export function changeProfileContentType(contentType) {
+  return {
+    type: actionTypes.PROFILE_CONTENT_TYPE_CHANGED,
+    payload: contentType
+  };
+}
+
 export function changePageSize(pageSize) {
   return {
     type: actionTypes.PAGE_SIZE_CHANGED,

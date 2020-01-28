@@ -1,5 +1,6 @@
 import React from "react";
 import InfoField from "./Common/InfoField";
+import "./Styles/UserInfo.css";
 
 class UserInfo extends React.Component {
   render(){
