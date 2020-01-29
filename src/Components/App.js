@@ -9,6 +9,7 @@ import AnnouncementPage from './Pages/AnnouncementPage';
 import RequestPage from './Pages/RequestPage';
 import PrivateRoute from '../Containers/PrivateRoute';
 import UserPage from '../Containers/UserPageContainer';
+import AnnouncementViewItemContainer from '../Containers/AnnouncementViewItemContainer';
  
 class App extends React.Component {
   render() {
@@ -22,7 +23,7 @@ class App extends React.Component {
                 <Route path="/adv" exact component={AdvertismentsPage}/>
                 <PrivateRoute  path="/adv/announcement/new" exact render ={ (props)=> <AnnouncementPage create={true}/>}/>
                 <PrivateRoute  path="/adv/request/new" exact render ={ (props)=> <RequestPage create={true}/>}/>
-                <Route path="/adv/:id" exact component={AuthComponent}/>
+                <Route path="/adv/:id" exact component={AnnouncementViewItemContainer}/>
 
             </Switch>
         </BrowserRouter>

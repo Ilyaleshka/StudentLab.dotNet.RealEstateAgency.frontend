@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPaginate from 'react-paginate';
-import RentalAnnouncementItem from "./RentalAnnouncementListItem";
+import UserAnnouncementItem from "./UserAnnouncementListItem";
 import './Styles/AnnouncementList.css';
 import './Styles/Paginate.css';
 
@@ -9,15 +9,34 @@ class UserAnnouncementList extends React.Component {
   render(){
     return ( 
     <div className="AnnouncementList">
-        {this.props.rentAnnouncements.map((rentReq) =>  (<RentalAnnouncementItem key={rentReq.Id} model={rentReq}/>))}
+        {this.props.rentAnnouncements.map((rentReq) =>  
+        (<UserAnnouncementItem key={rentReq.Id} 
+          model={rentReq} 
+          acceptHandler={this.props.acceptReservation} 
+          completeHandler={this.props.completeReservation} 
+          rejectHandler={this.props.rejectReservation}
+          deleteHandler={this.props.deleteAnnouncement}
+          moreInfoHandler={this.props.moreInfo}
+          onUpdate={this.updateHandler}/>))}
     </div>
     )
   };
 
+  updateHandler = () =>
+  {
+    this.props.fetchRentalAnnouncements();
+  }
+
   componentDidMount()
   {
-      this.props.fetchRentalAnnouncements();
+    this.props.fetchRentalAnnouncements();
   }
 }
 
 export default  UserAnnouncementList;
+
+
+/*acceptReservation: acceptReservation,
+    rejectReservation: rejectReservation,
+    completeReservation: completeReservation */// deleteAnnouncement:deleteAnnouncement,
+   // deleteRentRequest:

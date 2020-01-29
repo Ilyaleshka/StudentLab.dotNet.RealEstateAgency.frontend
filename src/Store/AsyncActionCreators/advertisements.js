@@ -15,6 +15,10 @@ import {
     rentRequestCreateSuccess,
     rentRequestCreateError,
 
+    rentAnnouncementInfoPending,
+    rentAnnouncementInfoError,
+    rentAnnouncementInfoSuccess
+
 } from '../ActionCreators/advertisements';
 
 
@@ -224,4 +228,42 @@ function  createRentalRequest(title, description, area, address, cost)
 }
 
 
-export { requestAdvertisements, requestRentRequests, requestAnnouncements,createRentalRequest , createAdvertisement};
+function  getAnnoucementInfo(id)
+{  
+    return async dispatch => {
+        dispatch(rentAnnouncementInfoPending());
+        try{
+            let responce = await fetch(`https://localhost:44305/api/announcements/${id}`,{
+                method:'post',  
+                mode: 'cors', // no-cors, cors, *same-origin
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });          //TODO
+
+            console.log(responce);
+            if(!responce.ok)
+            {
+                if(responce.bodyUsed)
+                {
+                    let errorBody = await responce.json();
+                    dispatch(rentAnnouncementInfoError(errorBody));
+                }
+                else
+                    dispatch(rentAnnouncementInfoError("Error occured"));
+
+                return;
+            }
+            
+            let respBody = await responce.json();
+            dispatch(rentAnnouncementInfoSuccess(respBody ));
+        }
+        catch(e){
+            dispatch(rentAnnouncementInfoError(e));
+        }
+    }
+}
+
+
+export { requestAdvertisements, requestRentRequests, requestAnnouncements,createRentalRequest , createAdvertisement, getAnnoucementInfo};

@@ -47,8 +47,6 @@ class RentalAnnouncementModel extends React.Component {
             Base64Images: [],
             FilesInfo: []
         });
-
-        //this.props.history.push("/adv");
     }
 
     titleChangeHandler = (event) => { this.setState({Title: event.target.value }); };

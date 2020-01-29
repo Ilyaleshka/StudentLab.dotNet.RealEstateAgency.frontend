@@ -26,7 +26,8 @@ export function userAdvertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 pending: false,
-                error: action.payload
+                error: action.payload,
+                userRequests: []
             }
 
         case actionTypes.USER_ANNOUNCEMENT_PENDING: 
@@ -44,7 +45,8 @@ export function userAdvertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 pending: false,
-                error: action.payload
+                error: action.payload,
+                userAnnouncements:[]
             }
             
         case actionTypes.USER_RESERVATION_PENDING: 
@@ -62,7 +64,8 @@ export function userAdvertisementsReducer(state = initialState, action) {
             return {
                 ...state,
                 pending: false,
-                error: action.payload
+                error: action.payload,
+                userReservations: []
             }
 
 

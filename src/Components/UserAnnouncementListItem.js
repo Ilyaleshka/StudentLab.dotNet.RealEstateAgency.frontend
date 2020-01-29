@@ -5,10 +5,51 @@ import "./Styles/RentalAnnouncementListItem.css"
 import Button from "./Common/Button";
 
 class RentalAnnouncementListItem extends React.Component {
+
+    completeHandler = () =>{
+        this.props.completeHandler(this.props.model.Id);
+        this.props.onUpdate();
+    }
+
+    rejectHandler = () =>{
+        this.props.rejectHandler(this.props.model.Id);
+        this.props.onUpdate();
+    }
+
+    acceptHandler = () =>{
+        this.props.acceptHandler(this.props.model.Id);
+        this.props.onUpdate();
+    }
+
+    deleteHandler = () =>{
+       //TODO
+       this.props.deleteHandler(this.props.model.Id);
+       this.props.onUpdate();
+       console.log("deleted");
+    }
+
+    moreInfoHandler = () =>{
+       //TODO
+       console.log("more info");
+    }
+
     render(){
 
         if(!this.props.model)
             return null;
+
+        var buttons;
+        if(this.props.model.Reservation)
+        {
+            if(this.props.model.Reservation.IsActive)
+                buttons = <Button value="Complete" onClick={this.completeHandler}/>;
+            if(!this.props.model.Reservation.IsConfirmed)
+                buttons = 
+                <React.Fragment> 
+                                <Button value="Reject" onClick={this.rejectHandler}/>
+                                <Button value="Accept" onClick={this.acceptHandler}/>
+                </React.Fragment>;         
+        }
 
         return ( 
             <div className="RentalAnnouncementItem">
@@ -22,14 +63,12 @@ class RentalAnnouncementListItem extends React.Component {
                 <InfoField label="Cost" value= {this.props.model.Cost}/>
                 <InfoField label="Description" value= {this.props.model.Description}/>
                 </div >
-                <Button value="More" onClick={this.props.onClick}/>
-                <Button value="Reject" onClick={this.props.onClick}/>
-                <Button value="Accept" onClick={this.props.onClick}/>
-                <Button value="Delete" onClick={this.props.onClick}/>
+                <Button value="More" onClick={this.moreInfoHandler}/>
+                <Button value="Delete" onClick={this.deleteHandler}/>
+                {buttons}
             </div>
         )
     };
 }
-// <ImageViewer images={this.props.model.Images}/>
 
 export default   RentalAnnouncementListItem;

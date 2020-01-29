@@ -32,7 +32,7 @@ class RentalAnnouncementViewItem extends React.Component {
 
     componentDidMount = () =>
     {
-
+        console.log(this.props.match.params.handle);
     }
 
     render(){
@@ -51,7 +51,6 @@ class RentalAnnouncementViewItem extends React.Component {
                     <LocationPicker value={this.state.Location}/>
                 </div>
                 <ModelTextArea label="Description" type="text" placeholder="Description" value={ this.state.Description }/>
-                <ImageViewer images={this.state.Images}/>
                 <Button value="Delete"/>
                 <Button value="Reserve"/>
                 <Button value="Reject reservation"/>
@@ -61,7 +60,7 @@ class RentalAnnouncementViewItem extends React.Component {
         )
     };
 }
-
+//<ImageViewer images={this.state.Images}/>
 export default  RentalAnnouncementViewItem;
 
 /*

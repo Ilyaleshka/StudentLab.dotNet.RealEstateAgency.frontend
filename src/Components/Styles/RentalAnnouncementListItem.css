@@ -35,5 +35,7 @@
 .RentalAnnouncementItem .Button
 {
     display: inline-block;
+    margin: 6px;    
+
 }
 

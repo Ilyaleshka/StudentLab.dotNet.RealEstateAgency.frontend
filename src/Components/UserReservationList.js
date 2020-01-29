@@ -1,7 +1,7 @@
 import React from "react";
 import './Styles/RequestList.css';
 import './Styles/Paginate.css';
-import RentalRequest from './RentalRequestListItem'
+import RentalRequest from './RentalAnnouncementListItem'
 
 class ReservationList extends React.Component {
 

@@ -3,8 +3,8 @@ import {actionTypes} from '../ActionTypes/UI';
 export const initialState = {
     pageSize: 5,
     pageNumber: 1,
-    pageContentType : "announcement",
-    profileContentType : "announcement",
+    pageContentType : "announcements",
+    profileContentType : "announcements",
 }
 
 export function UIReducer(state = initialState, action) {

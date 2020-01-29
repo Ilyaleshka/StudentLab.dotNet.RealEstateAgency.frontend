@@ -110,6 +110,25 @@ export function advertisementsReducer(state = initialState, action) {
                 error: action.payload
             }
 
+
+        case actionTypes.RENT_ANNOUNCEMENT_INFO_PENDING: 
+            return {
+                ...state,
+                infoPending: true
+            }
+        case actionTypes.RENT_ANNOUNCEMENT_INFO_SUCCESS:
+            return {
+                ...state,
+                imfoPending: false,
+                announcementInfo: action.payload
+            }
+        case actionTypes.RENT_ANNOUNCEMENT_INFO_ERROR:
+            return {
+                ...state,
+                infoPending: false,
+                error: action.payload
+            }
+
         case actionTypes.UPDATE_FILTERS:
             return {
                 ...state,

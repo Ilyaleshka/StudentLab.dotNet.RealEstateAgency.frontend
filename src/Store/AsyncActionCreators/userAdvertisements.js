@@ -162,7 +162,7 @@ export function rejectReservation(announcementId) {
     }
 }
 
-export function compliteReservation(announcementId) {
+export function completeReservation(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationComplitePending());
         try {
@@ -190,7 +190,55 @@ export function compliteReservation(announcementId) {
 }
 
 export function deleteAnnouncement(id) {
+    return async dispatch => {
+        dispatch(userActionCreators.rentAnnouncementDeletePending());
+        try {
+            let reservationsResponse = await fetch(`https://localhost:44305/api/announcements/${id}`,{
+                method:'delete',  
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                }}
+            );
+
+            if(!reservationsResponse.ok){
+                dispatch(userActionCreators.rentAnnouncementDeleteError(reservationsResponse));
+                return;
+            }
+            
+            let reservationsJson = await reservationsResponse.json();
+            dispatch(userActionCreators.rentAnnouncementDeleteSuccess(reservationsJson));
+
+        } catch (error) {
+            dispatch(userActionCreators.rentAnnouncementDeleteError(error));
+            return;
+        }
+    }
 }
 
 export function deleteRentRequest(id) {
+    return async dispatch => {
+        dispatch(userActionCreators.rentRequestDeletePending());
+        try {
+            let reservationsResponse = await fetch(`https://localhost:44305/api/requests/${id}`,{
+                method:'delete',  
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                }}
+            );
+
+            if(!reservationsResponse.ok){
+                dispatch(userActionCreators.rentRequestDeleteError(reservationsResponse));
+                return;
+            }
+            
+            let reservationsJson = await reservationsResponse.json();
+            dispatch(userActionCreators.rentRequestDeleteSuccess(reservationsJson));
+
+        } catch (error) {
+            dispatch(userActionCreators.rentRequestDeleteError(error));
+            return;
+        }
+    }
 }
