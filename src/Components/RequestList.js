@@ -6,6 +6,7 @@ import './Styles/Paginate.css';
 
 class RentalRequestList extends React.Component {
 
+  // Pagination abd filtering should change url and url change should trigger requests to backend for new data
   handlePageClick = (page) =>
   {
     let newpage = page.selected + 1;

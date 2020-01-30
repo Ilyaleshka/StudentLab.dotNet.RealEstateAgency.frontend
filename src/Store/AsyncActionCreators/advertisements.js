@@ -27,6 +27,8 @@ function requestAdvertisements(pageNumber,pageSize) {
         dispatch(rentAnnouncementPending());
         dispatch(rentAnnouncementPending());
         try {
+            // Makes sense to move host to env variable or setting. Also in makes sense to create API helper with methods like get, post, etc.
+            // For example in every post with data you pass 'Content-Type': 'application/json'. This can be encapsulated in API helper.
             let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/announcements?page=${pageNumber}&pageSize=${pageSize}`,
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.

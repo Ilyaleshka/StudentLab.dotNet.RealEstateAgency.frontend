@@ -24,6 +24,7 @@ class RentalRequestItem extends React.Component {
 
   };
 
+  // In react naming convention is handleTitleChange
   titleChangeHandler = (event) => { this.setState({Title: event.target.value }); };
   areaChangeHandler = (event) => { this.setState({Area: event.target.value }); };
   addressChangeHandler = (event) => { this.setState({PrefferedAddress: event.target.value }); };

@@ -22,6 +22,7 @@ class RentalAnnouncementListItem extends React.Component {
     return ( 
     <div className="RentalAnnouncementItem">
       <div className="map">
+        {/* Empty tag, please use self closing tag */}
         <LocationPicker value={this.props.model.Location}></LocationPicker>
       </div>
       <div className="info">

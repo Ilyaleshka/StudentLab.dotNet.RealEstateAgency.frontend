@@ -16,6 +16,7 @@ class SearchForm extends React.Component {
         maxArea:0,
     };
 
+    // handleMinCostChange
     minCostHandler = (event) => { this.setState({ minCost: event.target.value}); };
     maxCostHandler = (event) => { this.setState({ maxCost: event.target.value}); };
     minAreaHandler = (event) => { this.setState({ minArea: event.target.value}); };

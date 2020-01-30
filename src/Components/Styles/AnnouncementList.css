@@ -1,3 +1,4 @@
+/* Usually Css is stored next to component. For example you have folder 'AnnouncementList' and inside you have index.js with component and styles.css with CSS for that component */
 .AnnouncementList{
     width: 750px;
     margin: auto;

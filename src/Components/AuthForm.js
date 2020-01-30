@@ -19,6 +19,7 @@ class AuthForm extends React.Component {
     event.preventDefault();
 
     //AUTH HANDLER
+      // Name should describe what the function does
     this.props.handlerFromParent(this.state.Name , this.state.Password);
 
     this.setState({ Name: "", Password: ""});

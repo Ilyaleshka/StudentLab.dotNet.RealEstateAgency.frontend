@@ -27,6 +27,7 @@ class RegForm extends React.Component {
     });
   }
 
+  // Not a big thing but it's better to use full words like  handleFirstNameChange
   handleFnameChange = (event) => { this.setState({ Name: event.target.value }); };
   handleLnameChange = (event) => { this.setState({ LastName: event.target.value }); };
   handleEmailChange = (event) => { this.setState({ Email: event.target.value }); };
