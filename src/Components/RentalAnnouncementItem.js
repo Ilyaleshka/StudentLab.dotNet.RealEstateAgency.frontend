@@ -20,14 +20,6 @@ class RentalAnnouncementModel extends React.Component {
         FilesInfo: []
     };
 
-    constructor(props) {
-        super();
-
-        if(props.create === false)
-            this.state = {...props.model};
-
-    };
-
     submitHandler = (evt) => {
         evt.preventDefault();
 

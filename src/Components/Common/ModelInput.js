@@ -13,6 +13,7 @@ class ModelInput extends React.Component {
                 placeholder={this.props.placeholder}
                 value={this.props.value}
                 onChange={this.props.onChange}
+                readOnly={this.props.readonly}
                 />  
       </div>
     )

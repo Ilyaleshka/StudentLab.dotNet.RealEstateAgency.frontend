@@ -14,10 +14,17 @@ class AnnouncementList extends React.Component {
     this.props.fetchRentalAnnouncements(newpage,this.props.pageSize,this.props.filters);
   }
 
+  moreInfo = (id) =>
+  {
+    console.log("more");
+    this.props.history.push("/adv/" + id);
+    //this.props.moreInfo(this.props.model.Id)
+  }
+
   render(){
     return ( 
     <div className="AnnouncementList">
-        {this.props.rentAnnouncements.map((rentReq) =>  (<RentalAnnouncementItem key={rentReq.Id} model={rentReq}/>))}
+        {this.props.rentAnnouncements.map((rentReq) =>  (<RentalAnnouncementItem key={rentReq.Id} model={rentReq} moreInfo={this.moreInfo}/>))}
         {(this.props.pageCount > 0 &&
         <ReactPaginate
           previousLabel={'previous'}

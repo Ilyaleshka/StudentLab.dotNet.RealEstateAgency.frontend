@@ -40,7 +40,7 @@ export default class LocationPicker extends React.Component {
 
   onMapClick = (event) => {
     let coordinate = event.get("coords")
-    console.log(coordinate);
+    //console.log(coordinate);
     if(this.props.onChange)
       this.props.onChange(JSON.stringify(coordinate));
   };

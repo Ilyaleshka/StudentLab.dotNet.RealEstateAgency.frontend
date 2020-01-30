@@ -16,16 +16,19 @@ export default class ImageViewer extends React.Component {
 
     render() {
         let i = 0;
-        if((!this.props.images) && (this.props.images.lengh === 0))
-            return null;
         
+        if((!this.props.images) || (this.props.images.length === 0))
+            return null;
+
+        console.log(this.props.images.length);
+
         var imgs = this.props.images.map((el) => {return { original: el, thumbnail: el}});
 
         return (
             <div className="ImageViewer">
                 <Lightbox items={imgs } 
-                thumbnailWidth='150px'
-                thumbnailHeight='150px'/>
+                thumbnailWidth='100px'
+                thumbnailHeight='100px'/>
             </div >
         );
     };

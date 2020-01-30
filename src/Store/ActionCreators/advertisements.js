@@ -93,21 +93,21 @@ export function rentRequestCreateError(error) {
   
 export function rentAnnouncementInfoPending() {
   return {
-    type: actionTypes.RENT_REQUEST_CREATE_PENDING,
+    type: actionTypes.RENT_ANNOUNCEMENT_INFO_PENDING,
   };
 }
 
 
 export function rentAnnouncementInfoSuccess(data) {
   return {
-    type: actionTypes.RENT_REQUEST_CREATE_SUCCESS,
+    type: actionTypes.RENT_ANNOUNCEMENT_INFO_SUCCESS,
     payload: data
   };
 }
 
 export function rentAnnouncementInfoError(error) {
   return {
-    type: actionTypes.RENT_REQUEST_CREATE_ERROR,
+    type: actionTypes.RENT_ANNOUNCEMENT_INFO_ERROR,
     payload: error
   };
 }

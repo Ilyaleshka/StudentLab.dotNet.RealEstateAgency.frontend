@@ -6,6 +6,14 @@ import Button from "./Common/Button";
 import ImageViewer from "./Common/ImageViewer";
 
 class RentalAnnouncementListItem extends React.Component {
+
+  moreInfo = () =>
+  {
+    console.log("more");
+    this.props.moreInfo(this.props.model.Id);
+    //this.props.moreInfo(this.props.model.Id)
+  }
+
   render(){
 
     if(!this.props.model)
@@ -14,16 +22,16 @@ class RentalAnnouncementListItem extends React.Component {
     return ( 
     <div className="RentalAnnouncementItem">
       <div className="map">
-      <LocationPicker value={this.props.model.Location}></LocationPicker>
+        <LocationPicker value={this.props.model.Location}></LocationPicker>
       </div>
       <div className="info">
-      <InfoField label="Title" value= {this.props.model.Title}/>
-      <InfoField label="Area" value= {this.props.model.Area}/>
-      <InfoField label="Address" value= {this.props.model.Address}/>
-      <InfoField label="Cost" value= {this.props.model.Cost}/>
-      <InfoField label="Description" value= {this.props.model.Description}/>
+        <InfoField label="Title" value= {this.props.model.Title}/>
+        <InfoField label="Area" value= {this.props.model.Area}/>
+        <InfoField label="Address" value= {this.props.model.Address}/>
+        <InfoField label="Cost" value= {this.props.model.Cost}/>
+        <InfoField label="Description" value= {this.props.model.Description}/>
       </div >
-      <Button value="More" onClick={this.props.onClick}/>
+      <Button value="More" onClick={this.moreInfo}/>
     </div>
     )
   };

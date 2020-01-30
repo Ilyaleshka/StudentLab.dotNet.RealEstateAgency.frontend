@@ -234,7 +234,7 @@ function  getAnnoucementInfo(id)
         dispatch(rentAnnouncementInfoPending());
         try{
             let responce = await fetch(`https://localhost:44305/api/announcements/${id}`,{
-                method:'post',  
+                method:'get',  
                 mode: 'cors', // no-cors, cors, *same-origin
                 credentials: 'include',
                 headers: {

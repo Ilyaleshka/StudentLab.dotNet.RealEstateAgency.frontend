@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {requestAnnouncements} from '../Store/AsyncActionCreators/advertisements';
 import AnnouncementList from '../Components/AnnouncementList';
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
     rentAnnouncements: state.advertisementsReducer.rentAnnouncements,
@@ -14,7 +15,7 @@ const mapDispatchToProps = {
     fetchRentalAnnouncements: requestAnnouncements,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnnouncementList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AnnouncementList));
 
 //TODO
 /*

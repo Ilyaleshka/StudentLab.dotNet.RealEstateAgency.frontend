@@ -12,7 +12,8 @@ class ModelTextArea extends React.Component {
                 type={this.props.type}
                 placeholder={this.props.placeholder}
                 value={this.props.value}
-                onChange={this.props.onChange}/>  
+                onChange={this.props.onChange}
+                readOnly={this.props.readonly}/>  
       </div>
     )
   };
