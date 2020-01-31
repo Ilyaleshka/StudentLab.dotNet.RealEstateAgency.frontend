@@ -4,11 +4,11 @@ import AnnouncementList from '../Components/AnnouncementList';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-    rentAnnouncements: state.advertisementsReducer.rentAnnouncements,
-    pageCount: state.advertisementsReducer.pageCount,
-    pageSize: state.advertisementsReducer.pageSize,
-    currentPage: state.advertisementsReducer.currentPage,
-    filters: state.advertisementsReducer.filters,
+    rentAnnouncements: state.advertisements.rentAnnouncements,
+    pageCount: state.advertisements.pageCount,
+    pageSize: state.advertisements.pageSize,
+    currentPage: state.advertisements.currentPage,
+    filters: state.advertisements.filters,
 });
 
 const mapDispatchToProps = {

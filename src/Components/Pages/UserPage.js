@@ -8,7 +8,6 @@ class UserPage extends React.Component {
   render(){
     return(
         <React.Fragment>
-            <Header />
             <UserInfo {...this.props.info} />
             <UserContentContainer />
         </React.Fragment>

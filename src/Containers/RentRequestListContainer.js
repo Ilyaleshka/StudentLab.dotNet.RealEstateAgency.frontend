@@ -3,11 +3,11 @@ import {requestRentRequests} from '../Store/AsyncActionCreators/advertisements';
 import RentRequestList from '../Components/RequestList'
 
 const mapStateToProps = (state) => ({
-    rentRequests: state.advertisementsReducer.rentRequests,
-    pageCount: state.advertisementsReducer.pageCount,
-    pageSize: state.advertisementsReducer.pageSize,
-    currentPage: state.advertisementsReducer.currentPage,
-    filters: state.advertisementsReducer.filters,
+    rentRequests: state.advertisements.rentRequests,
+    pageCount: state.advertisements.pageCount,
+    pageSize: state.advertisements.pageSize,
+    currentPage: state.advertisements.currentPage,
+    filters: state.advertisements.filters,
 });
 
 const mapDispatchToProps = {

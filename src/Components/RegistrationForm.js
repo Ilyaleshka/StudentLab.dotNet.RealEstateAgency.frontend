@@ -17,7 +17,7 @@ class RegForm extends React.Component {
     evt.preventDefault();
 
     //ASYNC REGISTRATION HANDLER
-    this.props.handlerFromParent( this.state.Name, this.state.LastName, this.state.Email, this.state.Password);
+    this.props.handleRegistration( this.state.Name, this.state.LastName, this.state.Email, this.state.Password);
 
     this.setState( {
       Name: "",

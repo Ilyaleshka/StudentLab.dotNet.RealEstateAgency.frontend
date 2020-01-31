@@ -6,6 +6,12 @@ import './Styles/Paginate.css';
 
 class UserAnnouncementList extends React.Component {
 
+  moreInfo = (id) =>
+  {
+    console.log("more");
+    this.props.history && this.props.history.push("/adv/" + id);
+  }
+
   render(){
     return ( 
     <div className="AnnouncementList">
@@ -16,7 +22,7 @@ class UserAnnouncementList extends React.Component {
           completeHandler={this.props.completeReservation} 
           rejectHandler={this.props.rejectReservation}
           deleteHandler={this.props.deleteAnnouncement}
-          moreInfoHandler={this.props.moreInfo}
+          moreInfoHandler={this.moreInfo}
           onUpdate={this.updateHandler}/>))}
     </div>
     )

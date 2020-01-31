@@ -4,7 +4,7 @@ import LocationPicker from "./Common/LocationPicker";
 import "./Styles/RentalAnnouncementListItem.css"
 import Button from "./Common/Button";
 
-class RentalAnnouncementListItem extends React.Component {
+class   UserAnnouncementListItem extends React.Component {
 
     completeHandler = () =>{
         this.props.completeHandler(this.props.model.Id);
@@ -22,14 +22,13 @@ class RentalAnnouncementListItem extends React.Component {
     }
 
     deleteHandler = () =>{
-       //TODO
        this.props.deleteHandler(this.props.model.Id);
        this.props.onUpdate();
        console.log("deleted");
     }
 
     moreInfoHandler = () =>{
-       //TODO
+       this.props.moreInfoHandler(this.props.model.Id);
        console.log("more info");
     }
 
@@ -71,4 +70,4 @@ class RentalAnnouncementListItem extends React.Component {
     };
 }
 
-export default   RentalAnnouncementListItem;
+export default  UserAnnouncementListItem;

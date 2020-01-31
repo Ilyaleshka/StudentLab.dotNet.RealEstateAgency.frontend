@@ -3,7 +3,7 @@ import {requestUserRequests} from '../Store/AsyncActionCreators/userAdvertisemen
 import UserRequestList from '../Components/UserRequestList'
 
 const mapStateToProps = (state) => ({
-    rentRequests: state.userAdvertisementsReducer.userRequests,
+    rentRequests: state.userAdvertisements.userRequests,
 });
 
 const mapDispatchToProps = {

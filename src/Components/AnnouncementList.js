@@ -18,7 +18,7 @@ class AnnouncementList extends React.Component {
   moreInfo = (id) =>
   {
     console.log("more");
-    this.props.history.push("/adv/" + id);
+    this.props.history && this.props.history.push("/adv/" + id);
     //this.props.moreInfo(this.props.model.Id)
   }
 

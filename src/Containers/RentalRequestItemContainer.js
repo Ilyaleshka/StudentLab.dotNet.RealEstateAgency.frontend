@@ -3,7 +3,7 @@ import { createRentalRequest} from '../Store/AsyncActionCreators/advertisements'
 import RentalRequestModel from '../Components/RentalRequestItem';
 
 const mapStateToProps = (state) => ({
-    user: state.authorizationReducer.info
+    user: state.authorization.info
 });
 
 const mapDispatchToProps = {

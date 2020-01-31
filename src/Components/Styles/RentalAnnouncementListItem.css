@@ -23,6 +23,7 @@
     width: 47%;
     vertical-align:top;
     display: inline-block;
+    text-align: initial;
 }
 
 .RentalAnnouncementItem .InfoField

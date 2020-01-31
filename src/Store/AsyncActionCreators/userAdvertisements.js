@@ -166,7 +166,7 @@ export function completeReservation(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationComplitePending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/complite`,{
+            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/complete`,{
                 method:'post',  
                 credentials: "include",
                 headers: {

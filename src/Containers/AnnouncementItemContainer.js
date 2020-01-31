@@ -4,7 +4,7 @@ import { createAdvertisement} from '../Store/AsyncActionCreators/advertisements'
 import RentalAnnouncementModel from '../Components/RentalAnnouncementItem';
 
 const mapStateToProps = (state) => ({
-    user: state.authorizationReducer.info
+    user: state.authorization.info
 });
 
 const mapDispatchToProps = {

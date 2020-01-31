@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import UserPage from '../Components/Pages/UserPage';
 import UserContent from '../Components/UserContent';
 import {changeProfileContentType} from "../Store/ActionCreators/UI"
 
 const mapStateToProps = (state) => ({
-    contentType: state.UIReducer.profileContentType,
+    contentType: state.UI.profileContentType,
 });
 
 const mapDispatchToProps = {

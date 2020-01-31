@@ -6,9 +6,9 @@ import {withRouter} from 'react-router-dom';
 import {reserveAnnouncement, acceptReservation, rejectReservation, completeReservation, deleteAnnouncement} from '../Store/AsyncActionCreators/userAdvertisements';
 
 const mapStateToProps = (state) => ({
-    model: state.advertisementsReducer.announcementInfo,
-    isLoggedIn: state.authorizationReducer.isLoggedIn,
-    userInfo: state.authorizationReducer.info,
+    model: state.advertisements.announcementInfo,
+    isLoggedIn: state.authorization.isLoggedIn,
+    userInfo: state.authorization.info,
 });
 
 const mapDispatchToProps = {

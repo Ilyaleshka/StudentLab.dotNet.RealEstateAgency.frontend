@@ -16,14 +16,6 @@ class RentalRequestItem extends React.Component {
       MaxPrice: 0,
   };
 
-  constructor(props) {
-    super();
-
-    if(props.create === false)
-      this.state = { ...props.model };
-
-  };
-
   // In react naming convention is handleTitleChange
   titleChangeHandler = (event) => { this.setState({Title: event.target.value }); };
   areaChangeHandler = (event) => { this.setState({Area: event.target.value }); };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import registerUser from '../Store/AsyncActionCreators/registration';
-import RegistrationContainer from '../Components/RegistrationForm'
+import RegistrationForm from '../Components/RegistrationForm'
 
 
 const mapStateToProps = (state) => ({
@@ -8,9 +8,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-    handlerFromParent: registerUser //
+    handleRegistration: registerUser //
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
 
 //TODO

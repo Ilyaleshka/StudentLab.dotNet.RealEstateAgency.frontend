@@ -5,23 +5,10 @@ import RentalRequestItemContainer from "../../Containers/RentalRequestItemContai
 class RequestPage extends React.Component {
 
   render(){
-
-    let userModel =     
-    {    
-        Title : "Title Title Title Title Title TitleTitle",
-        Description : "Simple  longlonglonglonglonglong longlonglonglonglonglong longlonglonglonglonglong longlonglonglonglonglong longlonglonglonglonglong longlonglonglong ",
-        Area : 228,
-        PrefferedAddress : "Address Address Address Address Address Address",
-        MaxPrice: 1000,
-        Location : [10,10],
-        Images : "132435543345"
-    };
-
-
     return(
         <React.Fragment>
             <Header/>
-            <RentalRequestItemContainer create={this.props.create} model={userModel}/>
+            <RentalRequestItemContainer/>
         </React.Fragment>
     );
   }

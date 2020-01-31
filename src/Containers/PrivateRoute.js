@@ -14,7 +14,7 @@ class PrivateRoute extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isLoggedIn: state.authorizationReducer.isLoggedIn
+    isLoggedIn: state.authorization.isLoggedIn
 });
   
 const mapDispatchToProps = {};

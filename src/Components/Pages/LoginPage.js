@@ -7,7 +7,6 @@ class LoginPage extends React.Component {
   render(){
     return(
         <React.Fragment>
-            <Header />
             <AuthFormContainer/>
         </React.Fragment>
     );

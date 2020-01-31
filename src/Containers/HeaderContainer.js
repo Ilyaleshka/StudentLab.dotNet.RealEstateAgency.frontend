@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {logoutUser} from '../Store/AsyncActionCreators/authorization';
 
 const mapStateToProps = (state) => ({
-  isLoggedIn: state.authorizationReducer.isLoggedIn
+  isLoggedIn: state.authorization.isLoggedIn
 });
 
 const mapDispatchToProps = {

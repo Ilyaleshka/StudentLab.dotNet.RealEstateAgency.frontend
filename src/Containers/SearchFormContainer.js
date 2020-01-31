@@ -5,7 +5,7 @@ import {updateFilters} from "../Store/ActionCreators/advertisements"
 
 
 const mapStateToProps = (state) => ({
-    contentType: state.UIReducer.pageContentType,
+    contentType: state.UI.pageContentType,
 });
 
 const mapDispatchToProps = {

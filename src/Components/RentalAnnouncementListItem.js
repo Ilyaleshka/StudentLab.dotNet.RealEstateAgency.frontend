@@ -3,15 +3,12 @@ import InfoField from "./Common/InfoField";
 import LocationPicker from "./Common/LocationPicker";
 import "./Styles/RentalAnnouncementListItem.css"
 import Button from "./Common/Button";
-import ImageViewer from "./Common/ImageViewer";
 
 class RentalAnnouncementListItem extends React.Component {
 
   moreInfo = () =>
   {
-    console.log("more");
     this.props.moreInfo(this.props.model.Id);
-    //this.props.moreInfo(this.props.model.Id)
   }
 
   render(){
@@ -22,8 +19,7 @@ class RentalAnnouncementListItem extends React.Component {
     return ( 
     <div className="RentalAnnouncementItem">
       <div className="map">
-        {/* Empty tag, please use self closing tag */}
-        <LocationPicker value={this.props.model.Location}></LocationPicker>
+        <LocationPicker value={this.props.model.Location}/>
       </div>
       <div className="info">
         <InfoField label="Title" value= {this.props.model.Title}/>
@@ -37,7 +33,6 @@ class RentalAnnouncementListItem extends React.Component {
     )
   };
 }
-// <ImageViewer images={this.props.model.Images}/>
 
 export default   RentalAnnouncementListItem;
 

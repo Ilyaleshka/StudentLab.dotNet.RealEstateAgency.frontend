@@ -3,8 +3,8 @@ import UserPage from '../Components/Pages/UserPage';
 
 
 const mapStateToProps = (state) => ({
-    info: state.authorizationReducer.info,
-    contentType: state.UIReducer.profileContentType,
+    info: state.authorization.info,
+    contentType: state.UI.profileContentType,
 });
 
 const mapDispatchToProps = {

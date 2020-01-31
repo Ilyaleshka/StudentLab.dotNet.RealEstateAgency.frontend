@@ -7,7 +7,6 @@ class RegistrationPage extends React.Component {
   render(){
     return(
         <React.Fragment>
-            <Header/>
             <RegistrationFormContainer/>
         </React.Fragment>
     );
