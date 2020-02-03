@@ -25,7 +25,7 @@ function authorizeUser(name,password) {
     return async dispatch => {
         dispatch(authorizationPending());
         try{
-            let responce = await fetch('https://localhost:44305/api/account/login',{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/account/login',{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -61,7 +61,7 @@ function logoutUser() {
     return async dispatch => {
         dispatch(logout());
         try{
-            await fetch('https://localhost:44305/api/account/logout',{method:'post',credentials: "include"});     
+            await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/account/logout',{method:'post',credentials: "include"});     
         }
         catch
         {
@@ -76,7 +76,7 @@ function refreshUserInfo() {
     return async dispatch => {
         dispatch(userInfoPending());
         try{
-            let responce = await fetch('https://localhost:44305/api/account/info',{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/account/info',{
                 method:'post',  
                 credentials: "include",
                 headers: {

@@ -29,7 +29,7 @@ function requestAdvertisements(pageNumber,pageSize) {
         try {
             // Makes sense to move host to env variable or setting. Also in makes sense to create API helper with methods like get, post, etc.
             // For example in every post with data you pass 'Content-Type': 'application/json'. This can be encapsulated in API helper.
-            let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/announcements?page=${pageNumber}&pageSize=${pageSize}`,
+            let rentAnnouncementsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/announcements?page=${pageNumber}&pageSize=${pageSize}`,
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -52,7 +52,7 @@ function requestAdvertisements(pageNumber,pageSize) {
 
         dispatch(rentRequestPending());
         try {
-            let rentRequestsResponse = await fetch('https://localhost:44305/api/requests');
+            let rentRequestsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/requests');
 
             if(!rentRequestsResponse.ok){
                 dispatch(rentRequestError(rentRequestsResponse));
@@ -70,10 +70,13 @@ function requestAdvertisements(pageNumber,pageSize) {
 
 function requestAnnouncements(pageNumber,pageSize,filt = {}) {
     return async dispatch => {
+        
+    console.log(process.env.REACT_APP_HOST_ADDRESS);
+
         dispatch(rentAnnouncementPending());
         let filters =  createFilterQuery(filt);
         try {
-            let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/announcements?page=${pageNumber}&pageSize=${pageSize}` + filters,
+            let rentAnnouncementsResponse = await fetch( process.env.REACT_APP_HOST_ADDRESS + `/api/announcements?page=${pageNumber}&pageSize=${pageSize}` + filters,
                 {
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -101,7 +104,7 @@ function requestRentRequests(pageNumber,pageSize,filt = {}) {
         dispatch(rentRequestPending());
         let filters =  createFilterQuery(filt);
         try {
-            let rentRequestsResponse = await fetch(`https://localhost:44305/api/requests?page=${pageNumber}&pageSize=${pageSize}` + filters);
+            let rentRequestsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/requests?page=${pageNumber}&pageSize=${pageSize}` + filters);
 
             if(!rentRequestsResponse.ok){
                 dispatch(rentRequestError(rentRequestsResponse));
@@ -149,7 +152,7 @@ function  createAdvertisement(title, description, area, address, cost, location,
     return async dispatch => {
         dispatch(rentAnnouncementCreatePending());
         try{
-            let responce = await fetch('https://localhost:44305/api/announcements/create',{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/announcements/create',{
                 method:'post',  
                 mode: 'cors', // no-cors, cors, *same-origin
                 credentials: 'include',
@@ -196,7 +199,7 @@ function  createRentalRequest(title, description, area, address, cost)
     return async dispatch => {
         dispatch(rentRequestCreatePending());
         try{
-            let responce = await fetch('https://localhost:44305/api/requests/create',{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/requests/create',{
                 method:'post',  
                 mode: 'cors', // no-cors, cors, *same-origin
                 credentials: 'include',
@@ -235,7 +238,7 @@ function  getAnnoucementInfo(id)
     return async dispatch => {
         dispatch(rentAnnouncementInfoPending());
         try{
-            let responce = await fetch(`https://localhost:44305/api/announcements/${id}`,{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/announcements/${id}`,{
                 method:'get',  
                 mode: 'cors', // no-cors, cors, *same-origin
                 credentials: 'include',

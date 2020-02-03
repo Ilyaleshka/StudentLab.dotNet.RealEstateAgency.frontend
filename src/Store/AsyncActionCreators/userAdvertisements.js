@@ -4,7 +4,7 @@ export function requestUserAnnouncements() {
     return async dispatch => {
         dispatch(userActionCreators.userAnnouncementPending());
         try {
-            let rentAnnouncementsResponse = await fetch(`https://localhost:44305/api/profile/announcements`,
+            let rentAnnouncementsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/announcements`,
                 {
                     method: 'post', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, cors, *same-origin
@@ -31,7 +31,7 @@ export function requestUserRequests() {
     return async dispatch => {
         dispatch(userActionCreators.userRequestPending());
         try {
-            let rentRequestsResponse = await fetch(`https://localhost:44305/api/profile/requests`,{
+            let rentRequestsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/requests`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -58,7 +58,7 @@ export function requestUserReservations() {
     return async dispatch => {
         dispatch(userActionCreators.userReservationsPending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/reservations`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -85,7 +85,7 @@ export function reserveAnnouncement(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationCreatePending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/reserve`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/reservations/${announcementId}/reserve`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -112,7 +112,7 @@ export function acceptReservation(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationAcceptPending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/accept`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/reservations/${announcementId}/accept`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -139,7 +139,7 @@ export function rejectReservation(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationRejectPending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/reject`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/reservations/${announcementId}/reject`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -166,7 +166,7 @@ export function completeReservation(announcementId) {
     return async dispatch => {
         dispatch(userActionCreators.reservationComplitePending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/profile/reservations/${announcementId}/complete`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/profile/reservations/${announcementId}/complete`,{
                 method:'post',  
                 credentials: "include",
                 headers: {
@@ -193,7 +193,7 @@ export function deleteAnnouncement(id) {
     return async dispatch => {
         dispatch(userActionCreators.rentAnnouncementDeletePending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/announcements/${id}`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/announcements/${id}`,{
                 method:'delete',  
                 credentials: "include",
                 headers: {
@@ -220,7 +220,7 @@ export function deleteRentRequest(id) {
     return async dispatch => {
         dispatch(userActionCreators.rentRequestDeletePending());
         try {
-            let reservationsResponse = await fetch(`https://localhost:44305/api/requests/${id}`,{
+            let reservationsResponse = await fetch(process.env.REACT_APP_HOST_ADDRESS + `/api/requests/${id}`,{
                 method:'delete',  
                 credentials: "include",
                 headers: {

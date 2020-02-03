@@ -24,7 +24,7 @@ function registerUser( firstName, lastName, email, password) {
     return async dispatch => {
         dispatch(registrationPending());
         try{
-            let responce = await fetch('https://localhost:44305/api/account/register',{
+            let responce = await fetch(process.env.REACT_APP_HOST_ADDRESS + '/api/account/register',{
                 method:'post',  
                 headers: {
                     'Content-Type': 'application/json'
